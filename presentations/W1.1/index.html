@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>W1</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Web Programming</h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <h4>
+            What is the World Wide Web and how is it related to the Internet?
+          </h4>
+          <ul>
+            <li class="fragment fade-left">
+              The Web is an application that runs over the Internet
+            </li>
+            <li class="fragment fade-left">
+              The Web was invented by Tim-Berners Lee at CERN in 1991
+            </li>
+            <li class="fragment fade-left">
+              The Internet is the physical network of networks of networks
+            </li>
+          </ul>
+        </section>
+        <section>
+          <img src="../../assets/w1_internet.jpg" />
+          <p class="fragment fade-left">
+            <span class="align-middle"
+              ><img src="../../assets/thinking_emoji.png" style="height: 1em"
+            /></span>
+            Can you use the Internet without using the Web? What about
+            vice-versa?
+          </p>
+        </section>
+        <section class="text-start">
+          <div>
+            <h4>Client</h4>
+            <p>
+              Any computer on the network that requests services from another
+              computer on the network
+            </p>
+          </div>
+          <div class="fragment fade-left">
+            <h4>Server</h4>
+            <p>
+              Any computer that receives requests from client computers,
+              processes and sends the output
+            </p>
+          </div>
+          <div class="fragment fade-left">
+            <h4>Web page</h4>
+            <p>Any page that is hosted on the Internet</p>
+          </div>
+          <div class="fragment fade-left">
+            <h4>Web client (Browser)</h4>
+            <p>A program that retrieves information from the Web</p>
+          </div>
+        </section>
+
+        <section class="text-start h-100">
+          <h4>Web server</h4>
+          <ul>
+            <li>A program that waits for requests from web browsers</li>
+            <li>
+              It provides four major functions
+              <ul>
+                <li>Serving web pages</li>
+                <li>Executes programs and returns output</li>
+                <li>Controlling access to the server</li>
+                <li>Monitoring and logging all access</li>
+              </ul>
+            </li>
+          </ul>
+          <img
+            class="h-50"
+            style="background-color: var(--bg-color-primary)"
+            src="../../assets/w1_server.png"
+          />
+        </section>
+        <section class="text-start h-100">
+          <h4>What is the primary protocol that makes the Web work?</h4>
+          <p>Hypertext Transfer Protocol (HTTP)</p>
+          <ul>
+            <li>uses one TCP connection on well-known port 80</li>
+            <ul>
+              <li>connections are established between two IP addresses</li>
+              <li>
+                an IP address is a unique identifier assigned to a device or
+                domain that connects to the Internet
+              </li>
+            </ul>
+          </ul>
+
+          <ul>
+            <li>two types of messages</li>
+            <ul>
+              <li>Request</li>
+              <li>Response</li>
+            </ul>
+          </ul>
+          <div class="d-flex justify-content-between" style="gap: 3rem">
+            <img
+              class="m-auto"
+              style="min-width: 0; flex-basis: 50%"
+              src="../../assets/w1_packet.png"
+            />
+            <img
+              class="m-auto"
+              style="min-width: 0; flex-basis: 50%"
+              src="../../assets/w1_request.png"
+            />
+          </div>
+        </section>
+        <section>
+          <h4>Which are the primary languages of the Web?</h4>
+
+          <div class="text-start">
+            <div class="fragment slide-left">
+              <p><strong>HTML </strong>Hypertext Markup Language</p>
+              <ul>
+                <li>Defines syntax and semantics of the Web language</li>
+                <li>Provides structure for the web page design</li>
+              </ul>
+            </div>
+            <div class="fragment slide-left">
+              <p><strong>CSS </strong>Cascading Style Sheet</p>
+              <ul>
+                <li>Applies style to the web page elements</li>
+                <li>Primarily handles the “look and feel” of a web page</li>
+              </ul>
+            </div>
+            <div class="fragment slide-left">
+              <p><strong>Javascript</strong></p>
+              <ul>
+                <li>Adds interactivity to a web page</li>
+                <li>Programmatic code which enhances functionality</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <p>
+            Open your browser, press F12 and go to the Network tab. Try to spot
+            any of the aforementioned stuff
+          </p>
+          <img src="../../assets/w1_network_tab.png" />
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
