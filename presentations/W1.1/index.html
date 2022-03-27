@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>W1.1</title>
+    <title>How does the Web work?</title>
 
     <link
       rel="stylesheet"
@@ -27,141 +27,309 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>Web Programming</h2>
+          <h2>How does the Web work?</h2>
           <h4 class="float-end">Andreas Dranidis</h4>
         </section>
         <section>
           <h4>
             What is the World Wide Web and how is it related to the Internet?
           </h4>
+          <hr />
           <ul>
+            <li>
+              The Internet refers to the wide network of computer networks
+              through which digital information can be exchanged over different
+              protocols. The Internet is the most popular computer network in
+              the world
+            </li>
+            <li>
+              The World Wide Web (WWW), or, the Web for short, is a way to
+              access information via the internet. The Web is just a prominent
+              example of an Internet application. Other examples of internet
+              applications include email, online interactive gaming, chat apps,
+              BitTorrent, etc.
+            </li>
+          </ul>
+          <img class="r-stretch" src="../../assets/w1_internet.jpg" />
+        </section>
+        <section>
+          <h4>How the Web works</h4>
+          <hr />
+          <ul>
+            <div class="fragment fade-left">
+              <li class="mb-0">
+                Computers connected to the Web are called
+                <strong>clients</strong> and <strong>servers</strong>
+              </li>
+              <div class="d-flex justify-content-center">
+                <img
+                  style="filter: invert(0.95)"
+                  src="../../assets/w1_client_server.png"
+                />
+              </div>
+            </div>
+
             <li class="fragment fade-left">
-              The Web is an application that runs over the Internet
+              <strong>Clients</strong> are the typical web user's
+              internet-connected devices (for example, a computer connected to a
+              Wi-Fi, or a phone connected to a mobile network) and web-accessing
+              software available on those devices (e.g. a web browser like
+              Firefox or Chrome)
             </li>
             <li class="fragment fade-left">
-              The Web was invented by Tim-Berners Lee at CERN in 1991
-            </li>
-            <li class="fragment fade-left">
-              The Internet is the physical network of networks of networks
+              <strong>Servers</strong> are computers that store information
+              (webpages). When a client device wants to access a webpage, a copy
+              of the webpage is downloaded from the server to the client’s
+              machine and it is displayed in the user's web browser.
             </li>
           </ul>
         </section>
-        <section>
-          <img src="../../assets/w1_internet.jpg" />
-          <p class="fragment fade-left">
-            <span class="align-middle"
-              ><img src="../../assets/thinking_emoji.png" style="height: 1em"
-            /></span>
-            Can you use the Internet without using the Web? What about
-            vice-versa?
-          </p>
+        <section class="text-start">
+          <h4>So what happens, exactly?</h4>
+          <hr />
+          <ol>
+            <li>
+              <p>You type a URL (Uniform Resource Locator) into the browser</p>
+              <ul>
+                <li>a URL specifies addresses on the WWW</li>
+                <li>
+                  a URL has the format:<img
+                    class="ms-2 m-0 align-bottom"
+                    style="height: 2em; filter: invert(0.95)"
+                    src="../../assets/w1_url.png"
+                  />
+                </li>
+              </ul>
+            </li>
+            <li class="fragment fade-left">
+              <p>The browser parses the URL information</p>
+              <ul>
+                <li>
+                  This includes the protocol (“https”), the domain name
+                  (“github.com”) and the resource (“/”). In this case, there
+                  isn’t anything after the “.com” to indicate a specific file,
+                  so the browser will retrieve the main (index) page
+                </li>
+              </ul>
+            </li>
+            <li class="fragment fade-left">
+              The browser goes to a DNS (Domain Name System) server which
+              returns the IP address and port number of the server that hosts
+              website<img
+                class="ms-2 m-0 align-bottom"
+                style="height: 2em; filter: invert(0.95)"
+                src="../../assets/w1_addr.png"
+              />
+            </li>
+            <li class="fragment fade-left">
+              The browser takes the IP and port number and requests information
+              in the form of a file associated with that specific URL
+            </li>
+          </ol>
         </section>
         <section class="text-start">
-          <div>
-            <h4>Client</h4>
-            <p>
-              Any computer on the network that requests services from another
-              computer on the network
-            </p>
-          </div>
-          <div class="fragment fade-left">
-            <h4>Server</h4>
-            <p>
-              Any computer that receives requests from client computers,
-              processes and sends the output
-            </p>
-          </div>
-          <div class="fragment fade-left">
-            <h4>Web page</h4>
-            <p>Any page that is hosted on the Internet</p>
-          </div>
-          <div class="fragment fade-left">
-            <h4>Web client (Browser)</h4>
-            <p>A program that retrieves information from the Web</p>
-          </div>
-        </section>
-
-        <section class="text-start h-100">
-          <h4>Web server</h4>
-          <ul>
-            <li>A program that waits for requests from web browsers</li>
+          <h4>So what happens, exactly?</h4>
+          <hr />
+          <ol start="5">
             <li>
-              It provides four major functions
+              <p>
+                The browser takes the IP address and port number, and sends an
+                HTTP request message to the server, asking it to send a copy of
+                the website to the client
+              </p>
               <ul>
-                <li>Serving web pages</li>
-                <li>Executes programs and returns output</li>
-                <li>Controlling access to the server</li>
-                <li>Monitoring and logging all access</li>
+                <li>this is done over a TCP connection</li>
+                <li>
+                  the HTTP protocol defaults to port 80 and HTTPS defaults to
+                  port 443
+                </li>
               </ul>
+            </li>
+            <li class="fragment fade-left">
+              <p>
+                If the server approves the client's request, the server sends
+                the client a "200 OK" message, and then starts sending the
+                website's files to the browser in packets
+              </p>
+              <ul>
+                <li>
+                  if the server cannot find the requested file, it sends back an
+                  HTTP 404 error message ("Page Not Found")
+                </li>
+              </ul>
+            </li>
+            <li class="fragment fade-left">
+              The browser assembles the packets into a file, parses the file and
+              displays it to you
+            </li>
+          </ol>
+        </section>
+        <section>
+          <h4>HTTP – How Computers Talk on the Web</h4>
+          <hr />
+          <ul>
+            <li>
+              <p>
+                The Hypertext Transfer Protocol (HTTP) is an application-layer
+                protocol that computers use to transmit data (e.g. an HTML file)
+              </p>
+            </li>
+            <li>
+              <p>
+                It is the foundation of data communication for the WWW, where
+                hypertext documents include hyperlinks to other resources that
+                the user can easily access
+              </p>
+            </li>
+            <li class="mb-0">
+              <p class="mb-0">It was initiated by Tim Berners-Lee (1989)</p>
             </li>
           </ul>
           <img
-            class="h-50"
-            style="background-color: var(--bg-color-primary)"
-            src="../../assets/w1_server.png"
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/w1_http.png"
           />
         </section>
-        <section class="text-start h-100">
-          <h4>What is the primary protocol that makes the Web work?</h4>
-          <p>Hypertext Transfer Protocol (HTTP)</p>
+        <section>
+          <h4>Hypertext and Hyperlinks</h4>
+          <hr />
           <ul>
-            <li>uses one TCP connection on well-known port 80</li>
+            <li>
+              <p>
+                Hypertext is text displayed on a computer display with
+                references (hyperlinks) to other text that the reader can
+                immediately access.
+              </p>
+            </li>
+            <li>
+              <p>
+                So, it is text which is not constrained to be linear and links
+                to other information.
+              </p>
+            </li>
+          </ul>
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/w1_hyperlinks.png"
+          />
+        </section>
+        <section>
+          <h4>HTML</h4>
+          <hr />
+          <ul>
+            <li>
+              <p>
+                The HyperText Markup Language (HTML) is the standard markup
+                language of the WWW
+              </p>
+            </li>
             <ul>
-              <li>connections are established between two IP addresses</li>
               <li>
-                an IP address is a unique identifier assigned to a device or
-                domain that connects to the Internet
+                <p>
+                  It runs natively in every browser and is maintained by the W3C
+                </p>
+              </li>
+              <li>
+                <p>
+                  It allows the user to create and structure sections,
+                  paragraphs, headings, links etc. for web pages and
+                  applications
+                </p>
+              </li>
+            </ul>
+            <li>
+              <p>
+                HTML makes it possible to organize/format documents, similarly
+                to MS Word. It is NOT a programming language
+              </p>
+            </li>
+            <ul>
+              <li>
+                <p>
+                  It doesn’t have the ability to create dynamic functionality
+                </p>
+              </li>
+            </ul>
+            <li>
+              <p>
+                The first version of HTML was written by Tim Berners-Lee in
+                1993. Since then, there have been many different versions of
+                HTML
+              </p>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>HTML Pros and Cons</h4>
+          <hr />
+          <ul>
+            <li>Some advantages</li>
+            <ul>
+              <li>
+                Widely used, with a lot of resources and a huge community behind
+              </li>
+              <li>Runs natively in every web browser</li>
+              <li>Comes with a flat learning curve</li>
+              <li>Open-source and completely free</li>
+              <li>Clean and consistent markup</li>
+              <li>Easily integrated with backend languages (e.g. PHP)</li>
+            </ul>
+            <li>Some disadvantages</li>
+            <ul>
+              <li>
+                Used for static webpages. The content and structure of a webpage
+              </li>
+              <li>It does not allow the user to implement logic</li>
+              <li>Some browsers adopt new features slowly</li>
+              <li>
+                Browser behavior may be hard to predict (e.g. older browsers)
               </li>
             </ul>
           </ul>
-
-          <ul>
-            <li>two types of messages</li>
-            <ul>
-              <li>Request</li>
-              <li>Response</li>
-            </ul>
-          </ul>
-          <div class="d-flex justify-content-between" style="gap: 3rem">
-            <img
-              class="m-auto"
-              style="min-width: 0; flex-basis: 50%"
-              src="../../assets/w1_packet.png"
-            />
-            <img
-              class="m-auto"
-              style="min-width: 0; flex-basis: 50%"
-              src="../../assets/w1_request.png"
-            />
-          </div>
         </section>
         <section>
-          <h4>Which are the primary languages of the Web?</h4>
-
-          <div class="text-start">
-            <div class="fragment slide-left">
-              <p><strong>HTML </strong>Hypertext Markup Language</p>
-              <ul>
-                <li>Defines syntax and semantics of the Web language</li>
-                <li>Provides structure for the web page design</li>
-              </ul>
-            </div>
-            <div class="fragment slide-left">
-              <p><strong>CSS </strong>Cascading Style Sheet</p>
-              <ul>
-                <li>Applies style to the web page elements</li>
-                <li>Primarily handles the “look and feel” of a web page</li>
-              </ul>
-            </div>
-            <div class="fragment slide-left">
-              <p><strong>Javascript</strong></p>
-              <ul>
-                <li>Adds interactivity to a web page</li>
-                <li>Programmatic code which enhances functionality</li>
-              </ul>
-            </div>
-          </div>
+          <h4>What Does ‘Markup’ Mean?</h4>
+          <hr />
+          <ul>
+            <li>
+              Annotate a document with extra information that define elements
+              within a document
+            </li>
+            <li>
+              HTML uses angle brackets (< and >) to separate the annotations
+              from the regular text. These annotations are called TAGS in HTML
+            </li>
+            <li>Tags don’t show up in the finished document</li>
+            <li>Tags can be (and frequently are) nested inside each other</li>
+          </ul>
         </section>
+        <section>
+          <h4>HTML Tree Structure</h4>
+          <hr />
+          <ul>
+            <li>
+              An HTML document contains elements (nodes). Most elements can
+              contain other elements. The structure created is a tree
+            </li>
+            <div class="d-flex">
+              <div style="flex: 0 0 50%">
+                <li>Parent: a node that directly includes other nodes</li>
+                <li>Children: nodes contained within another node</li>
+                <li>Siblings: nodes with the same parent</li>
+              </div>
+              <div style="flex: 0 0 50%">
+                <img
+                  class="m-0 w-100 mw-100"
+                  style="filter: invert(0.95)"
+                  src="../../assets/w1_dom.png"
+                />
+              </div>
+            </div>
+          </ul>
+        </section>
+
         <section>
           <p>
             Open your browser, press F12 and go to the Network tab. Try to spot
