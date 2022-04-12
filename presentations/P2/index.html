@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>W1.2</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Web Programming</h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <img src="../../assets/w1_history.png" />
+        </section>
+        <section>
+          <h4>What is HTML5?</h4>
+          <ul>
+            <li>
+              The latest revision of the HTML standard (originally created in
+              1990)
+            </li>
+            <li>
+              Its core aims to improve the language with support for the latest
+              multimedia while keeping it easily readable by humans and
+              consistently understood by computers and devices
+            </li>
+            <li>
+              HTML 5 ≈ HTML 5 + CSS 3 + Javascript = Rich Internet Applications
+              (RIA)
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Who is developing HTML 5?</h4>
+          <ul>
+            <li>
+              We all know that a certain degree of structure is needed and
+              somebody clearly needs to be in charge of the specification of
+              HTML 5. That challenge is the job of two important organizations:
+            </li>
+            <ul>
+              <li>
+                WHATWG Web Hypertext Application Technology Working Group:
+                Founded in 2004 by individuals working for browser vendors
+                Apple, Mozilla, Google, and Opera, WHATWG develops HTML and APIs
+                for web application development & provides open collaboration of
+                browser vendors and other interested parties
+              </li>
+              <li>
+                W3C World Wide Web Consortium: The W3C contains the HTML working
+                group that is currently charged with delivering the HTML 5
+                specification
+              </li>
+            </ul>
+
+            <li>
+              Latest working draft at W3C:
+              <a href="w3c.github.io/html/">w3c.github.io/html/</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Goals of HTML5</h4>
+          <ul>
+            <li>
+              New features should be based on: HTML, CSS, DOM, and Javascript
+            </li>
+            <li>Develop practical new features:</li>
+            <ul>
+              <li>reduce the need for external plugins (like Flash)</li>
+              <li>more markup to replace scripting</li>
+            </ul>
+            <li>Semantic markup in order to have more readable code</li>
+            <li>Ensure backwards compatibility</li>
+            <li>Define robust error handling</li>
+            <li>Device independent</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim><script type="text/template">
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>This is document title</title>
+              </head>
+  
+              <body>
+                <h1>This is heading 1</h1>
+                <p>Document content goes here.....</p>
+              </body>
+            </html>
+          </script></code></pre>
+          <a href="EX1">Click me</a>
+          <p>All HTML5 documents must start with a document type declaration</p>
+          <pre><code data-trim><script type="text/template">
+            <!DOCTYPE html>
+          </script></code></pre>
+
+          <p>Older doctype for HTML 4.01 Strict</p>
+          <pre><code data-trim><script type="text/template">
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+          </script></code></pre>
+        </section>
+        <section>
+          <pre><code data-trim><script type="text/template">
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>This is document title</title>
+              </head>
+  
+              <body>
+                <h1>This is heading 1</h1>
+                <p>Document content goes here.....</p>
+              </body>
+            </html>
+          </script></code></pre>
+          <a href="EX1">Click me</a>
+          <dl>
+            <dt>&lt;html&gt;</dt>
+            <dd>
+              This tag signals that from here on we are going to write in HTML
+              code.
+            </dd>
+            <dt>&lt;head&gt;</dt>
+            <dd>
+              This is where all the metadata for the page goes — stuff mostly
+              meant for search engines and other computer programs.
+            </dd>
+            <dt>&lt;body&gt;</dt>
+            <dd>This is where the content of the page goes.</dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Tags & Attributes</h4>
+          <hr />
+          <ul>
+            <li>
+              Tags are used to mark up the start of an HTML element and they are
+              usually enclosed in angle brackets. An example of a tag is:
+              &lt;h1&gt;. <br />
+            </li>
+            <li>
+              Most tags must be opened &lt;h1&gt; and closed &lt;/h1&gt; in
+              order to function.
+            </li>
+            <li>
+              There are also self closing tags which are also alternatively
+              known as void tags, empty tags, singletons tags, etc. i.e these
+              tags do not have contents and also can not have any child.
+            </li>
+            <li>
+              A few examples of self closing tags are &lt;img /&gt;, &lt;input
+              /&gt;, &lt;br /&gt;, &lt;hr /&gt;, etc.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Tags & Attributes</h4>
+          <hr />
+          <ul>
+            <li>
+              Attributes contain additional pieces of information. Attributes
+              take the form of an opening tag and additional info is placed
+              inside.
+            </li>
+            <li>
+              An example of an attribute is:
+              <pre><code data-trim><script type="text/template">
+                <img src="mydog.jpg" alt="A photo of my dog.">
+
+              </script></code></pre>
+            </li>
+            <li>
+              In this instance, the image source (src) and the alt text (alt)
+              are attributes of the <img /> tag.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Inside the &lt;head&gt; tag</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+              <head>
+                <title>My First Webpage</title>
+                <meta charset="UTF-8">
+                <meta name="description" content="This field contains information about your page. 
+                  It is usually around two sentences long.">.
+                <meta name="author" content="Andreas Dranidis">
+              </head>
+            </script></code></pre>
+          <dl>
+            <dt>&lt;title&gt;</dt>
+            <dd>
+              This is where we insert the page name as it will appear at the top
+              of the browser window or tab.
+            </dd>
+            <dt>&lt;meta&gt;</dt>
+            <dd>
+              This is where information about the document is stored: character
+              encoding, name (page context), description.
+            </dd>
+            <dt>&lt;script&gt;</dt>
+            <dd>
+              This is where we embed executable code or data; this is typically
+              used to embed or refer to JavaScript code.
+            </dd>
+            <dt>&lt;style&gt;</dt>
+            <dd>
+              This is where we insert style information for a document, or part
+              of a document. It contains CSS, which is applied to the contents
+              of the document containing the &lt;style&gt; element.
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Commonly used HTML elements</h4>
+          <hr />
+          <dl>
+            <dt>&lt;p&gt;</dt>
+            <dd>
+              creates a new paragraph. We place all of our regular text inside
+              this element.
+            </dd>
+            <dt>
+              &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;,
+              &lt;h6&gt;
+            </dt>
+            <dd>
+              &lt;h1&gt; and &lt;h2&gt; should be used for the most important
+              titles, while the remaining tags should be used for sub-headings
+              and less important text. <br />
+              Search engine bots use this order when deciphering which
+              information is most important on a page.
+            </dd>
+            <dt>&lt;a&gt;</dt>
+            <dd>
+              <pre
+                class="m-0 mb-2"
+              ><code data-trim><script type="text/template">
+                <a href="https://blogging.com/how-to-start-a-blog/">Your Link Text Here </a>
+              </script></code></pre>
+              The first part of the attribute points to the page that will open
+              once the link is clicked. Meanwhile, the second part of the
+              attribute contains the text which will be displayed to a visitor
+              in order to entice them to click on that link.
+            </dd>
+            <dt>&lt;img&gt;</dt>
+            <dd>
+              Display images. Much like the &lt;a&gt; anchor element,
+              &lt;img&gt; also contains an attribute. The attribute features
+              information for your computer regarding the source, height, width
+              and alt text of the image.
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Commonly used HTML elements</h4>
+          <hr />
+          <dl>
+            <dt>&lt;ol&gt;, &lt;ul&gt;, &lt;dl&gt;</dt>
+            <dd>
+              In web design, there are 3 different types of lists which you may
+              wish to add to your site. Ordered Lists, Unordered Lists and
+              Definition Lists. Inside the &lt;ol&gt; and &lt;ul&gt; tags we
+              list each item on the list inside &lt;li&gt; &lt;/li&gt; tags.
+              Inside the &lt;dl&gt; we use &lt;dt&gt; for the "term" and
+              &lt;dd&gt; for the definition.
+            </dd>
+            <div class="d-flex">
+              <div style="flex: 0 0 50%">
+                <pre><code data-trim><script type="text/template">
+                  <ul>
+                    <li>This is an</li>
+                    <li>Unordered List</li>
+                  </ul>
+                </script></code></pre>
+              </div>
+              <div style="flex: 0 0 50%">
+                <pre><code data-trim><script type="text/template">
+                              <dl>
+                                <dt>Item</dt>
+                                <dd>The definition goes here</dd>
+                              </dl>
+                            </script></code></pre>
+              </div>
+            </div>
+            <dt>&lt;strong&gt;, &lt;i&gt;, &lt;u&gt; and more...</dt>
+            <dd>
+              These elements help us to control the text or make it appear in a
+              certain way.
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Block and Inline Elements</h4>
+          <hr />
+          <ul>
+            <li>
+              Every HTML element has a default display value, depending on what
+              type of element it is.
+            </li>
+            <li>
+              A block-level element always starts on a new line, and the
+              browsers automatically add some space (a margin) before and after
+              the element.
+            </li>
+
+            <li>
+              An inline element does not start on a new line. An inline element
+              only takes up as much width as necessary.
+            </li>
+          </ul>
+          <p style="border: 5px solid red">
+            I am a paragraph element
+            <span style="border: 5px solid green">
+              (I am a span element and I am an inline element)</span
+            >
+            and I am a block element
+          </p>
+          <a href="EX2">Click me</a>
+        </section>
+        <section>
+          <h4>Let's talk about structure</h4>
+          <hr />
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P2_page.png"
+          />
+        </section>
+        <section>
+          <h4>Let's talk about structure</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex: 0 0 50%">
+              <pre><code data-trim><script type="text/template">
+                <table>
+                  <tr>
+                    <td>This is</td>
+                    <td>bad</td>
+                  </tr>
+                  <tr>
+                    <td>if it's not</td>
+                    <td>used for tables ONLY</td>
+                  </tr>
+                </table>
+              </script></code></pre>
+            </div>
+            <div style="flex: 0 0 50%">
+              <pre><code data-trim><script type="text/template">
+                <div>
+                  <div>
+                    <div>OK</div>
+                    <div>OK</div>
+                  </div>
+                  <div>
+                    <div>could</div>
+                    <div>be better</div>
+                  </div>
+                </div>
+              </script></code></pre>
+            </div>
+          </div>
+          <p>
+            Can you spot any problems regarding each of the above "design"
+            examples?
+          </p>
+          <p>
+            Imagine you are a machine crawling through a website. Is any of the
+            above helpful to identifying the related content?
+          </p>
+        </section>
+        <section>
+          <h4>Semantic Markup</h4>
+          <hr />
+          <ul>
+            <li>
+              Google analyzed millions of pages to discover the common ID names
+              for DIV tags and found a huge amount of repetition.
+            </li>
+            <ul>
+              <li>
+                For example, since many people used DIV id="footer" to mark up
+                footer content, HTML5 provides a set of new elements that can be
+                used in modern browsers right now.
+              </li>
+            </ul>
+
+            <li>
+              One content type that contains many new HTML5 elements is the
+              sectioning content type.
+            </li>
+            <ul>
+              <li>
+                HTML5 defines a new semantic markup to describe an element’s
+                content.
+              </li>
+              <li>
+                Using semantic markup doesn’t provide any immediate benefits,
+                but it does simplify the design of your HTML pages, and search
+                engines can definitely take advantage of these elements as they
+                crawl and index pages.
+              </li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h4>New Features at a Glance</h4>
+          <hr />
+          <ul>
+            <li>
+              Features designed to enrich the semantic content of documents
+            </li>
+            <li>
+              Examples include &lt;section&gt;, &lt;article&gt;, &lt;header&gt;,
+              and &lt;nav&gt;
+            </li>
+            <li>
+              Other new attributes have been introduced for the same purpose,
+              while some elements and attributes have been removed. Some
+              elements, such as &lt;a&gt; and &lt;cite&gt; have been changed,
+              redefined or standardized.
+            </li>
+            <li>
+              HTML5 defines a new semantic markup to describe an element’s
+              content.
+            </li>
+            <li>
+              Using semantic markup doesn’t provide any immediate benefits, but
+              it does simplify the design of your HTML pages, and search engines
+              can definitely take advantage of these elements as they crawl and
+              index pages.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P2_semantic_page.png"
+          />
+        </section>
+        <section>
+          <h4>New Semantic Elements</h4>
+          <hr />
+          <dl>
+            <dt>&lt;header&gt;</dt>
+            <dd>
+              The header element represents a group of introductory or
+              navigational aids. A header element is intended to usually contain
+              the section’s heading (an h1–h6 element or an hgroup element).
+              <br />
+              The header element can also be used to wrap a section’s table of
+              contents, a search form, or any relevant logos.
+            </dd>
+            <dt>&lt;footer&gt;</dt>
+            <dd>
+              The footer element represents a footer for its nearest ancestor
+              sectioning content or sectioning root element. <br />
+              A footer typically contains information about its section such as
+              who wrote it, links to related documents, copyright data, and the
+              like. <br />
+              Footers don’t necessarily have to appear at the end of a section,
+              though they usually do. <br />
+              When the footer element contains entire sections, they represent
+              appendices, indexes, license agreements, and other such content.
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>New Semantic Elements</h4>
+          <hr />
+          <dl>
+            <dt>&lt;section&gt;</dt>
+            <dd>
+              The section element represents a generic document or application
+              section. A section, in this context, is a thematic grouping of
+              content, typically with a heading.
+
+              <br />
+              Examples of sections would be chapters, the various tabbed pages
+              in a tabbed dialog box, or the numbered sections of a thesis.
+              <br />
+              A Web site's home page could be split into sections for an
+              introduction, news items, contact information.
+            </dd>
+            <dt>&lt;article&gt;</dt>
+            <dd>
+              The article element represents a component of a page that consists
+              of a self-contained composition in a document, page, application,
+              or site and that is intended to be independently distributable or
+              reusable. <br />
+              This could be a forum post, a magazine or newspaper article, a Web
+              log entry, a user-submitted comment, an interactive widget or
+              gadget, or any other independent item of content.
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>New Semantic Elements</h4>
+          <hr />
+          <dl>
+            <dt>&lt;nav&gt;</dt>
+            <dd>
+              The nav element represents a section with navigation links.
+
+              <br />
+              Not all groups of links on a page need to be in a nav element -
+              only sections that consist of major navigation blocks are
+              appropriate for the nav element.
+              <br />
+              For example, it is common for footers to have a short list of
+              links to various pages of a site, such as the terms of service,
+              the home page, and a copyright page. Footer element alone is
+              sufficient for such cases, without a nav element.
+            </dd>
+            <dt>&lt;aside&gt;</dt>
+            <dd>
+              The aside element represents a section of a page that consists of
+              content that is tangentially related to the content around the
+              aside element, and which could be considered separate from that
+              content.
+              <br />
+              Such sections are often represented as sidebars in printed
+              typography.
+              <br />The element can be used for typographical effects like pull
+              quotes or sidebars, for advertising, for groups of nav elements,
+              and for other content that is considered separate from the main
+              content of the page.
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>User input</h4>
+          <hr />
+          <ul>
+            <li>
+              The &lt;input&gt; tag specifies an input field where the user can
+              enter data.
+            </li>
+            <li>
+              The &lt;input&gt; element can be displayed in several ways,
+              depending on the type attribute.
+            </li>
+            <li>
+              Tip: Always use the &lt;label&gt; tag to define labels for
+              &lt;input type="text"&gt;, &lt;input type="checkbox"&gt;,
+              &lt;input type="radio"&gt;, &lt;input type="file"&gt;, and
+              &lt;input type="password"&gt;.
+            </li>
+            <div class="d-flex" style="font-size: 20px">
+              <div style="flex: 0 0 50%">
+                <ul>
+                  <li style="margin: 4px">&lt;input type="button"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="checkbox"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="color"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="date"&gt;</li>
+                  <li style="margin: 4px">
+                    &lt;input type="datetime-local"&gt;
+                  </li>
+                  <li style="margin: 4px">&lt;input type="email"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="file"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="hidden"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="image"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="month"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="number"&gt;</li>
+                </ul>
+              </div>
+              <div style="flex: 0 0 50%">
+                <ul>
+                  <li style="margin: 4px">&lt;input type="password"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="radio"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="range"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="reset"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="search"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="submit"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="tel"&gt;</li>
+                  <li style="margin: 4px">
+                    &lt;input type="text"&gt; (default value)
+                  </li>
+                  <li style="margin: 4px">&lt;input type="time"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="url"&gt;</li>
+                  <li style="margin: 4px">&lt;input type="week"&gt;</li>
+                </ul>
+              </div>
+            </div>
+          </ul>
+          <a href="EX3">Click me</a>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
