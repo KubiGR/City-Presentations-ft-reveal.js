@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>How does the Web work?</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Cascading Style Sheets</h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <h4>CSS - Cascading Style Sheets</h4>
+          <hr />
+          <ul>
+            <li>
+              One of the three core languages of the Web (HTML, CSS, Javascript)
+            </li>
+            <li>
+              Invented in 1996 by W3C - became popular after 2000. Latest
+              version: CSS3
+            </li>
+            <li>CSS is the presentation language of the Web</li>
+            <li>
+              The ‘Driving’ Problem:
+              <ul>
+                <li>
+                  What font type and size does &lt;h1&gt;Heading&lt;/h1&gt;
+                  generate? <br />
+                  Answer: The default format from the browser
+                </li>
+                <li>
+                  Early HTML - Override defaults with attributes. <br />
+                  &lt;table border="2" bordercolor="black"&gt;
+                </li>
+                <li>
+                  Style sheets were added to address these issues. <br />
+                  Specify style to use rather than browser default. <br />
+                  Not have to code styling on every element.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>CSS to the Rescue</h4>
+          <hr />
+          <ul>
+            <li>
+              <strong>Key concept:</strong> <em>Separate style from content</em>
+            </li>
+            <li>Content is in HTML files</li>
+            <li>Formatting information in .css code</li>
+            <li>
+              Link a presentation styling with element(s) <br />Selectors such
+              as HTML tags, element ids, or through a class
+            </li>
+            <li>
+              Define once for multiple pages <br />
+              DRY principle (Don’t Repeat Yourself)
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Pros and Cons of CSS</h4>
+          <hr />
+          <div style="position: absolute; left: 50px; top: 160px">😃</div>
+          <ul>
+            <li>Reusability and time saving</li>
+            <li>Consistency in design and easy maintenance</li>
+            <li>Bandwidth reduction - faster loading time</li>
+            <li>Search engine friendly</li>
+            <li>
+              Respond to varying screen sizes - multiple device compatibility
+            </li>
+          </ul>
+          <hr />
+          <div style="position: absolute; left: 50px; top: 360px">😓</div>
+          <ul>
+            <li>Compatibility - Cross-browser issues</li>
+            <li>Complexity and confusion for beginners</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Anatomy of a Ruleset</h4>
+          <hr />
+          <img
+            src="../../assets/P3_css_selector.png"
+            class="r-stretch"
+            style="filter: invert(0.95)"
+          />
+          <ul>
+            <li>The selector points to the HTML element you want to style.</li>
+            <li>
+              The declaration section assigns rules to the selector. It can have
+              one or more rules separated by semicolons.
+            </li>
+            <li>
+              Each declaration has 'a property and value' pair, separated by a
+              colon. A declaration ends with semicolon and the whole block is
+              surrounded by curly brackets.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>CSS Properties</h4>
+          <hr />
+          <p>There exists so many properties.</p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference"
+            >MDN Web Docs - Most common CSS reference</a
+          >
+          <br />
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference"
+            >MDN Web Docs - Complete CSS reference</a
+          >
+        </section>
+        <section>
+          <h4>Where to add CSS</h4>
+          <hr />
+          <ul class="d-flex flex-column">
+            <li>
+              <strong>External</strong> - having the CSS in a separate file. The
+              most common and most useful method
+            </li>
+            <pre><code data-trim><script type="text/template">
+              <head>
+                <link rel="stylesheet" href="styles.css" />
+              </head>
+            </script></code></pre>
+            <li>
+              <strong>Embedded</strong> - within an HTML document by placing CSS
+              inside a &lt;style&gt; element contained inside the HTML
+              &lt;head&gt;. Less efficient than external.
+            </li>
+            <pre><code data-trim><script type="text/template">
+              <head>
+                <style>
+                  h1 {
+                    color: blue;
+                    background-color: yellow;
+                  }
+                  </style>
+              </head>
+            </script></code></pre>
+            <li>
+              <strong>Inline</strong> - within a ‘style’ attribute of a single
+              HTML element. Avoid it.
+            </li>
+            <pre><code data-trim><script type="text/template">
+              <h1 style="color: blue; background-color: yellow;">Hey</h1>
+            </script></code></pre>
+          </ul>
+        </section>
+        <section>
+          <h4>Simple CSS Selectors</h4>
+          <hr />
+          <ul class="d-flex flex-column">
+            <li>
+              <strong>Type selector:</strong> (also called tag, name or
+              element). It selects an HTML tag/element.
+            </li>
+            <pre><code data-trim><script type="text/template">
+              span {
+                background-color: yellow;
+              }
+            </script></code></pre>
+            <li>
+              <strong>Class selector:</strong> starts with a full stop (.) and
+              selects everything in the HTML with that class applied to it.
+            </li>
+            <pre><code data-trim><script type="text/template">
+              .highlight {
+                background-color: yellow;
+              }
+            </script></code></pre>
+            <li>
+              <strong>ID selector:</strong> starts with a # and targets only one
+              element - used once per page. Use a little as possible.
+            </li>
+            <pre><code data-trim><script type="text/template">
+              #vote-tick {
+                background-color: yellow;
+              }            
+            </script></code></pre>
+            <li>Selectors can be combined with comma</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Advanced CSS Selectors</h4>
+          <hr />
+          <ul class="d-flex flex-column">
+            <div class="d-flex">
+              <li style="flex-basis: 50%; flex-shrink: 0; margin-right: 1rem">
+                <strong>Combinator selectors</strong> - select elements based on
+                a specific relationship between them
+              </li>
+              <pre><code data-trim><script type="text/template">
+                /* descendant */
+                div p {
+                  background-color: yellow;
+                }
+                /* child */
+                div > p {
+                  background-color: yellow;
+                }
+              </script></code></pre>
+            </div>
+            <div class="d-flex">
+              <li style="flex-basis: 50%; flex-shrink: 0; margin-right: 1rem">
+                <strong>Pseudo-class selectors</strong> - select elements based
+                on a certain state
+              </li>
+              <pre><code data-trim><script type="text/template">
+              /* mouse over link */
+              a:hover {
+                color: red;
+              }
+            </script></code></pre>
+            </div>
+            <div class="d-flex">
+              <li style="flex-basis: 50%; flex-shrink: 0; margin-right: 1rem">
+                <strong>Pseudo-elements selectors</strong> - select and style a
+                part of an element
+              </li>
+              <pre><code data-trim><script type="text/template">
+              p::first-line {
+                color: red;
+                font-variant: small-caps;
+              }           
+            </script></code></pre>
+            </div>
+            <div class="d-flex">
+              <li style="flex-basis: 50%; flex-shrink: 0; margin-right: 1rem">
+                <strong>Attribute selectors</strong> - select elements based on
+                an attribute or attribute value
+              </li>
+              <pre><code data-trim><script type="text/template">
+              a[target] {
+                background-color: yellow;
+              }         
+            </script></code></pre>
+            </div>
+          </ul>
+          <a href="EX1">Click me</a>
+        </section>
+        <section>
+          <h4>CSS Box Model</h4>
+          <hr />
+          <p>Each HTML element consists of four elements:</p>
+          <dl>
+            <dt>Content</dt>
+            <dd>The content of the box, where text and images appear</dd>
+            <dt>Padding</dt>
+            <dd>
+              Clears an area around the content. The padding is transparent
+            </dd>
+            <dt>Border</dt>
+            <dd>A border that goes around the padding and content</dd>
+            <dt>Margin</dt>
+            <dd>
+              Clears an area outside the border. The margin is transparent
+            </dd>
+          </dl>
+          <img
+            src="../../assets/p3_box.png"
+            class="r-stretch"
+            style="filter: invert(0.95)"
+          />
+        </section>
+        <section>
+          <h4>CSS Frameworks</h4>
+          <hr />
+          <p class="my-5"><em>Bootstrap and friends</em></p>
+          <p>
+            In essence, a CSS framework comprises several CSS stylesheets ready
+            for use by web developers and designers. The stylesheets are prepped
+            for use for standard web design functions: setting colors, layout,
+            fonts, navbars, etc.
+          </p>
+          <p class="my-5">
+            <em>But is Bootstrap necessary or even suggested for beginners?</em>
+          </p>
+          <ol>
+            <li>Make sure you really know CSS</li>
+            <li>Learn Bootstrap</li>
+            <li>
+              Study Bootstrap code, you'll learn some layout foundations and
+              there are actually a lot of interesting tricks
+            </li>
+            <li>Use your own CSS (perhaps combined with a bit of Bootstrap)</li>
+          </ol>
+        </section>
+        <section>
+          <h4><em>And always remember...</em></h4>
+          <hr />
+          <img
+            src="../../assets/home_css.jpg"
+            class="r-stretch"
+            style="filter: invert(0.95)"
+          />
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

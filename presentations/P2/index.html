@@ -27,7 +27,7 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>Web Programming</h2>
+          <h2>HTML</h2>
           <h4 class="float-end">Andreas Dranidis</h4>
         </section>
         <section>
@@ -608,7 +608,104 @@
               </div>
             </div>
           </ul>
+        </section>
+        <section>
+          <h4>Datalists</h4>
+          <hr />
+          <ul>
+            <li>
+              The &lt;datalist&gt; tag provides an autocomplete feature on list,
+              giving users a list of predefined options that automatically
+              appears and is filtered as the user enters data into the list box
+            </li>
+          </ul>
+
+          <pre><code data-trim><script type="text/template">
+            <input name="zipCode" type="text" list="zips">
+            <datalist id="zips">
+              <option value="32826">
+              <option value="90210">
+              <option value="32817">
+            </datalist>
+          </script></code></pre>
           <a href="EX3">Click me</a>
+        </section>
+        <section>
+          <h4>Forms</h4>
+          <hr />
+          <ul>
+            <li>
+              An HTML form is used to collect user input. The user input is most
+              often sent to a server for processing.
+            </li>
+            <li>
+              The &lt;form&gt; element is a container for different types of
+              input elements, such as: text fields, checkboxes, radio buttons,
+              submit buttons, etc.
+            </li>
+            <li>
+              The &lt;input type="submit"&gt; defines a button for submitting
+              the form data to a form-handler. The form-handler is typically a
+              file on the server with a script for processing input data. The
+              form-handler is specified in the form's action attribute.
+            </li>
+          </ul>
+
+          <pre><code data-trim><script type="text/template">
+            <form action="/action_page.php">
+              <label for="fname">First name:</label>
+              <input type="text" id="fname" placeholder="Your name..." autofocus>
+              <input type="submit" value="Submit">
+            </form>
+          </script></code></pre>
+          <a href="EX4">Click me</a>
+        </section>
+        <section>
+          <h4>Events</h4>
+          <hr />
+          <ul>
+            <li>
+              HTML has the ability to let events trigger actions in a browser,
+              like starting a JavaScript when a user clicks on an element.
+            </li>
+            <ul>
+              <li>
+                Events triggered for the window object (applies to the
+                &lt;body&gt; tag):
+              </li>
+              <li>
+                Events triggered by actions inside a HTML form (applies to
+                almost all HTML elements, but is most used in form elements):
+              </li>
+              <li>Keyboard Events</li>
+              <li>Mouse Events</li>
+              <li>Drag Events</li>
+              <li>Clipboard Events</li>
+              <li>Media Events</li>
+            </ul>
+          </ul>
+
+          <pre><code data-trim><script type="text/template">
+            <button onclick="myFunction()">Click me</button>
+            <body onload="myFunction()">
+          </script></code></pre>
+          <a href="EX5">Click me</a>
+        </section>
+        <section>
+          <h4>HTML 5 APIs</h4>
+          <hr />
+          <ul>
+            <li>Client-side persistent data storage</li>
+            <li>An offline Web application API</li>
+            <li>Drag and drop objects</li>
+            <li>A network API allowing communication using TCP.</li>
+            <li>Browser history API</li>
+            <li>Cross-document messaging</li>
+            <li>
+              Server-sent events in combination with the new event-source
+              element.
+            </li>
+          </ul>
         </section>
       </div>
     </div>
