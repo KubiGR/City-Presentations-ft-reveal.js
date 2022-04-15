@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>W1</title>
+    <title>The Hub</title>
 
     <link
       rel="stylesheet"
@@ -19,67 +19,41 @@
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
     <link rel="stylesheet" href="dist/theme/black.css" />
-
-    <!-- Theme used for syntax highlighted code -->
-    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
   </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <div style="display: grid; gap: 1rem">
-            <div>
-              <a href="/presentations/P1">
-                <img
-                  class="m-0"
-                  style="
-                    height: 200px;
-                    max-width: 100%;
-                    max-height: 100%;
-                    vertical-align: middle;
-                  "
-                  src="assets/home_web.jpg"
-                />
-              </a>
-            </div>
-            <div>
-              <a href="/presentations/P2">
-                <img
-                  class="m-0"
-                  style="height: 200px; max-width: 100%; max-height: 100%vertical-align: middle;"
-                  src="assets/home_html.png"
-              /></a>
-            </div>
-            <div>
-              <a href="/presentations/P3">
-                <img
-                  class="m-0"
-                  style="height: 200px; max-width: 100%; max-height: 100%vertical-align: middle; filter: invert(0.95)"
-                  src="assets/home_css.jpg"
-              /></a>
-            </div>
-          </div>
-        </section>
+  <body class="min-h-100" style="background-image: url('./assets/pres-bg.png')">
+    <div class="d-flex flex-wrap h-100 m-100 p-4" style="gap: 1rem">
+      <div class="d-flex align-items-center">
+        <a href="/presentations/P1">
+          <img
+            class="d-block"
+            style="height: 300px"
+            src="assets/home_web.jpg"
+          />
+        </a>
+      </div>
+      <div class="d-flex align-items-center">
+        <a href="/presentations/P2">
+          <img class="d-block" style="height: 300px" src="assets/home_html.png"
+        /></a>
+      </div>
+      <div class="d-flex align-items-center">
+        <a href="/presentations/P3">
+          <img
+            class="d-block"
+            style="height: 300px; filter: invert(0.95)"
+            src="assets/home_css.jpg"
+        /></a>
+      </div>
+      <div class="d-flex align-items-center">
+        <a href="/presentations/P4">
+          <img class="d-block" style="width: 400px" src="assets/home_js_1.jpg"
+        /></a>
+      </div>
+      <div class="d-flex align-items-center">
+        <a href="/presentations/P4">
+          <img class="d-block" style="width: 400px" src="assets/home_js_1.jpg"
+        /></a>
       </div>
     </div>
-
-    <script src="dist/reveal.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
-    <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        hash: true,
-
-        parallaxBackgroundImage: "/assets/pres-bg.png",
-        parallaxBackgroundSize: "2100px 1080px",
-
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-      });
-    </script>
   </body>
 </html>
