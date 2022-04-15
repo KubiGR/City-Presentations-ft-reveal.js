@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>How does the Web work?</title>
+    <title>CSS</title>
 
     <link
       rel="stylesheet"
@@ -263,7 +263,9 @@
             </script></code></pre>
             </div>
           </ul>
-          <a href="EX1">Click me</a>
+          <a href="EX1" style="position: absolute; top: 0; right: 0">
+            <img class="m-0 mw-100 mh-100" src="../../assets/click_me.png" />
+          </a>
         </section>
         <section>
           <h4>CSS Box Model</h4>
@@ -288,6 +290,44 @@
             class="r-stretch"
             style="filter: invert(0.95)"
           />
+        </section>
+        <section>
+          <h4>CSS Specificity</h4>
+          <hr />
+          <p>
+            If there are two or more CSS rules that point to the same element,
+            the selector with the highest specificity value will "win", and its
+            style declaration will be applied to that HTML element.
+          </p>
+          <p>
+            Think of specificity as a score/rank that determines which style
+            declaration are ultimately applied to an element.
+          </p>
+          <pre><code data-trim><script type="text/template">
+              #demo {color: blue;}
+              .test {color: green;}
+              p {color: red;}
+
+              <p id="demo" class="test" style="color: pink;">Hello World!</p>
+          </script></code></pre>
+          <p style="font-size: smaller">
+            <strong>Calculating specificity:</strong> Start at 0, add 100 for
+            each ID value, add 10 for each class value (or pseudo-class or
+            attribute selector), add 1 for each element selector or
+            pseudo-element.
+          </p>
+          <p style="font-size: smaller; font-style: italic">
+            Note: Inline style gets a specificity value of 1000, and is always
+            given the highest priority! <br />
+
+            Note 2: There is one exception to this rule: if you use the
+            !important rule, it will even override inline styles!
+          </p>
+          <p style="font-size: smaller; text-align: start">
+            A: h1 color: red;<br />
+            B: h1#content color: orange;<br />
+            C: &lt;h1 id="content" style="color: pink;"&gt;Heading&lt;/h1&gt;
+          </p>
         </section>
         <section>
           <h4>CSS Frameworks</h4>
