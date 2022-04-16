@@ -27,41 +27,766 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>Cascading Style Sheets</h2>
+          <h2>An Introduction to JavaScript</h2>
           <h4 class="float-end">Andreas Dranidis</h4>
         </section>
         <section>
-          <h4>CSS - Cascading Style Sheets</h4>
+          <h4>An Introduction to JavaScript</h4>
+          <hr />
+          <ul>
+            <li>JavaScript was initially created to “make web pages alive”.</li>
+            <li>
+              The programs in this language are called scripts. They can be
+              written right in a web page’s HTML and run automatically as the
+              page loads.
+            </li>
+            <li>
+              Scripts are provided and executed as plain text. They don’t need
+              special preparation or compilation to run.
+            </li>
+            <li>
+              When JavaScript was created, it initially had another name:
+              “LiveScript”. But Java was very popular at that time, so it was
+              decided that positioning a new language as a “younger brother” of
+              Java would help. But as it evolved, JavaScript became a fully
+              independent language with its own specification called ECMAScript,
+              and now it has no relation to Java at all.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>JavaScript engine</h4>
           <hr />
           <ul>
             <li>
-              One of the three core languages of the Web (HTML, CSS, Javascript)
+              Today, JavaScript can execute not only in the browser, but also on
+              the server, or actually on any device that has a special program
+              called the JavaScript engine.
             </li>
             <li>
-              Invented in 1996 by W3C - became popular after 2000. Latest
-              version: CSS3
+              The browser has an embedded engine sometimes called a “JavaScript
+              virtual machine”.
             </li>
-            <li>CSS is the presentation language of the Web</li>
             <li>
-              The ‘Driving’ Problem:
+              Different engines have different “codenames”. For example:
               <ul>
+                <li>V8 – in Chrome, Opera and Edge.</li>
+                <li>SpiderMonkey – in Firefox.</li>
                 <li>
-                  What font type and size does &lt;h1&gt;Heading&lt;/h1&gt;
-                  generate? <br />
-                  Answer: The default format from the browser
-                </li>
-                <li>
-                  Early HTML - Override defaults with attributes. <br />
-                  &lt;table border="2" bordercolor="black"&gt;
-                </li>
-                <li>
-                  Style sheets were added to address these issues. <br />
-                  Specify style to use rather than browser default. <br />
-                  Not have to code styling on every element.
+                  …There are other codenames like “Chakra” for IE,
+                  “JavaScriptCore”, “Nitro” and “SquirrelFish” for Safari, etc.
                 </li>
               </ul>
             </li>
           </ul>
+        </section>
+        <section>
+          <h4>What can in-browser JavaScript do?</h4>
+          <hr />
+          <ul>
+            <li>
+              Modern JavaScript is a “safe” programming language. It does not
+              provide low-level access to memory or CPU, because it was
+              initially created for browsers which do not require it.
+            </li>
+            <li>
+              JavaScript’s capabilities greatly depend on the environment it’s
+              running in. For instance, Node.js supports functions that allow
+              JavaScript to read/write arbitrary files, perform network
+              requests, etc.
+            </li>
+            <li>
+              In-browser JavaScript can do everything related to webpage
+              manipulation, interaction with the user, and the webserver.
+            </li>
+            <li>
+              For instance, in-browser JavaScript is able to:
+
+              <ul>
+                <li>
+                  Add new HTML to the page, change the existing content, modify
+                  styles.
+                </li>
+                <li>
+                  React to user actions, run on mouse clicks, pointer movements,
+                  key presses.
+                </li>
+                <li>
+                  Send requests over the network to remote servers, download and
+                  upload files (so-called AJAX and COMET technologies).
+                </li>
+                <li>
+                  Get and set cookies, ask questions to the visitor, show
+                  messages.
+                </li>
+                <li>Remember the data on the client-side (“local storage”).</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>What CAN’T in-browser JavaScript do?</h4>
+          <hr />
+          <ul>
+            <li>
+              JavaScript’s abilities in the browser are limited for the sake of
+              a user’s safety. The aim is to prevent an evil webpage from
+              accessing private information or harming the user’s data.
+            </li>
+            <li>
+              Examples of such restrictions include:
+
+              <ul>
+                <li>
+                  JavaScript on a webpage may not read/write arbitrary files on
+                  the hard disk, copy them or execute programs. It has no direct
+                  access to OS functions.
+                </li>
+                <li>
+                  Modern browsers allow it to work with files, but the access is
+                  limited and only provided if the user does certain actions,
+                  like “dropping” a file into a browser window or selecting it
+                  via an &lt;input&gt; tag.
+                </li>
+                <li>
+                  There are ways to interact with camera/microphone and other
+                  devices, but they require a user’s explicit permission. So a
+                  JavaScript-enabled page may not sneakily enable a web-camera,
+                  observe the surroundings and send the information to the NSA.
+                </li>
+                <li>
+                  Different tabs/windows generally do not know about each other.
+                  Sometimes they do, for example when one window uses JavaScript
+                  to open the other one. But even in this case, JavaScript from
+                  one page may not access the other if they come from different
+                  sites (from a different domain, protocol or port).
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>What CAN’T in-browser JavaScript do?</h4>
+          <hr />
+
+          <ul>
+            <li>
+              JavaScript can easily communicate over the net to the server where
+              the current page came from. But its ability to receive data from
+              other sites/domains is crippled. Though possible, it requires
+              explicit agreement (expressed in HTTP headers) from the remote
+              side. Once again, that’s a safety limitation.
+            </li>
+
+            <li>
+              Such limits do not exist if JavaScript is used outside of the
+              browser, for example on a server. Modern browsers also allow
+              plugin/extensions which may ask for extended permissions.
+            </li>
+          </ul>
+          <img class="r-stretch" src="../../assets/P4_same_origin.png" />
+        </section>
+        <section>
+          <h4>Hello, world!</h4>
+          <hr />
+          <p>inside the script tags</p>
+          <pre><code data-trim>
+            &lt;script&gt;
+              alert('Hello, world!');
+            &lt;/script&gt;
+          </code></pre>
+          <p>linking to external local js file</p>
+          <pre><code data-trim>
+            &lt;script src="/path/to/script.js"&gt;&lt;/script&gt;
+          </code></pre>
+          <p>linking to external remote js file</p>
+          <pre><code data-trim>
+            &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"&gt;&lt;/script&gt;
+          </code></pre>
+          <p>src is prioritised from code inside</p>
+          <pre><code data-trim>
+            &lt;script src="file.js"&gt;
+              alert('Hello, world!');
+            &lt;/script&gt;
+          </code></pre>
+        </section>
+        <section>
+          <h4>Statements</h4>
+          <hr />
+          <p>
+            Statements are syntax constructs and commands that perform actions.
+          </p>
+          <p>
+            We can have as many statements in our code as we want. Statements
+            can be separated with a semicolon.
+          </p>
+          <pre><code data-trim>
+            alert('Hello'); alert('World');
+
+            alert('Hello');
+            alert('World');
+
+            alert('Hello')
+            alert('World')
+          </code></pre>
+          <h4>
+            In most cases, a newline implies a semicolon. But “in most cases”
+            does not mean “always”! It is recommended to put semicolons between
+            statements even if they are separated by newlines.
+          </h4>
+          <pre><code data-trim>
+            alert("Hello")
+
+            [1, 2].forEach(alert);
+          </code></pre>
+        </section>
+        <section>
+          <h4>Comments</h4>
+          <hr />
+          <p>One-line comments start with two forward slash characters //.</p>
+          <pre><code data-trim>
+            // This comment occupies a line of its own
+            alert('Hello');
+
+            alert('World'); // This comment follows the statement
+          </code></pre>
+          <p>
+            Multiline comments start with a forward slash and an asterisk /* and
+            end with an asterisk and a forward slash */.
+          </p>
+          <pre><code data-trim>
+            /* An example with two messages.
+            This is a multiline comment.
+            */
+            alert('Hello');
+            alert('World');
+          </code></pre>
+          <p>
+            <em>TIP: Use <button>Ctrl + /</button> to comment easily </em>
+          </p>
+        </section>
+        <section>
+          <h4>"use strict"</h4>
+          <hr />
+          <ul>
+            <li>
+              For a long time, JavaScript evolved without compatibility issues.
+              New features were added to the language while old functionality
+              didn’t change.
+            </li>
+            <li>
+              That had the benefit of never breaking existing code. But the
+              downside was that any mistake or an imperfect decision made by
+              JavaScript’s creators got stuck in the language forever.
+            </li>
+            <li>
+              This was the case until 2009 when ECMAScript 5 (ES5) appeared. It
+              added new features to the language and modified some of the
+              existing ones. To keep the old code working, most such
+              modifications are off by default. You need to explicitly enable
+              them with a special directive: "use strict".
+            </li>
+          </ul>
+          <pre><code data-trim>
+            "use strict";
+
+            // this code works the modern way
+            ...
+          </code></pre>
+          <p>
+            <em
+              >Modern JavaScript supports “classes” and “modules” – advanced
+              language structures (we’ll surely get to them), that enable use
+              strict automatically. So we don’t need to add the "use strict"
+              directive, if we use them.
+            </em>
+          </p>
+        </section>
+        <section>
+          <h4>Variables</h4>
+          <hr />
+          <p>To create a variable in JavaScript, use the let keyword.</p>
+          <pre><code data-trim>
+            let message;
+
+            message = 'Hello'; // store the string 'Hello' in the variable named message
+          </code></pre>
+          <pre><code data-trim>
+            let user = 'John', age = 25, message = 'Hello';
+
+            let user = 'John';
+            let age = 25;
+            let message = 'Hello';
+
+            let user = 'John'
+              , age = 25
+              , message = 'Hello';
+          </code></pre>
+          <pre><code data-trim>
+            let hello = 'Hello world!';
+            let message;
+            message = hello;
+
+            // now two variables hold the same data
+            alert(hello); // Hello world!
+            alert(message); // Hello world!
+          </code></pre>
+          <pre><code data-trim>
+            let message = "This";
+            let message = "That"; // SyntaxError: 'message' has already been declared
+          </code></pre>
+        </section>
+        <section>
+          <h4>Variable naming</h4>
+          <hr />
+          <p>There are two limitations on variable names in JavaScript:</p>
+          <ol>
+            <li>
+              The name must contain only letters, digits, or the symbols $ and
+              _.
+            </li>
+            <li>The first character must not be a digit.</li>
+          </ol>
+          <p>
+            When the name contains multiple words, camelCase is commonly used.
+            That is: words go one after another, each word except first starting
+            with a capital letter: <code>myVeryLongName</code>.
+          </p>
+          <p>
+            Variables named <code>apple</code> and <code>AppLE</code> are two
+            different variables.
+          </p>
+          <p>
+            There is a list of reserved words, which cannot be used as variable
+            names because they are used by the language itself. For example:
+            let, class, return, and function are reserved.
+          </p>
+          <pre><code data-trim>
+              let let = 5; // can't name a variable "let", error!
+              let return = 5; // also can't name it "return", error!
+            </code></pre>
+        </section>
+        <section>
+          <h4>Constants</h4>
+          <hr />
+          <p>
+            To declare a constant (unchanging) variable, use const instead of
+            let:
+          </p>
+          <pre><code data-trim>
+            const myBirthday = '18.04.1982';
+
+            myBirthday = '01.01.2001'; // error, can't reassign the constant!
+          </code></pre>
+          <p>
+            There is a widespread practice to use constants as aliases for
+            difficult-to-remember values that are known prior to execution. Such
+            constants are named using capital letters and underscores.
+          </p>
+          <pre><code data-trim>
+            const COLOR_RED = "#F00";
+            const COLOR_GREEN = "#0F0";
+            const COLOR_BLUE = "#00F";
+            const COLOR_ORANGE = "#FF7F00";
+            
+            // ...when we need to pick a color
+            let color = COLOR_ORANGE;
+            alert(color); // #FF7F00
+          </code></pre>
+          <pre><code data-trim>
+            const pageLoadTime = /* time taken by a webpage to load */;
+          </code></pre>
+          <p>
+            The value of pageLoadTime is not known prior to the page load, so
+            it’s named normally. But it’s still a constant because it doesn’t
+            change after assignment. In other words, capital-named constants are
+            only used as aliases for “hard-coded” values.
+          </p>
+        </section>
+        <section>
+          <h4>Data types</h4>
+          <hr />
+          <p>
+            Programming languages that allow such things, such as JavaScript,
+            are called “dynamically typed”, meaning that there exist data types,
+            but variables are not bound to any of them.
+          </p>
+          <pre><code data-trim>
+            // no error
+            let message = "hello";
+            message = 123456;
+          </code></pre>
+
+          <ul style="float: left">
+            <li>Number</li>
+            <li>BigInt</li>
+            <li>String</li>
+            <li>Boolean (logical type)</li>
+            <li>The “null” value</li>
+            <li>The “undefined” value</li>
+            <li>Objects and Symbols</li>
+          </ul>
+          <pre><code data-trim>
+            typeof undefined // "undefined"
+            typeof 0 // "number"
+            typeof 10n // "bigint"
+            typeof true // "boolean"
+            typeof "foo" // "string"
+            typeof Symbol("id") // "symbol"
+            typeof Math // "object"
+            typeof null // "object"
+            typeof alert // "function"
+          </code></pre>
+        </section>
+        <section>
+          <h4>Interaction: alert, prompt, confirm</h4>
+          <hr />
+          <p>alert</p>
+          <pre><code data-trim>
+            alert("Hello");
+          </code></pre>
+          <p>prompt</p>
+          <pre><code data-trim>
+            result = prompt(title, [default]);
+
+            let age = prompt('How old are you?', 100);
+            alert(`You are ${age} years old!`); // You are 100 years old!
+          </code></pre>
+          <p>confirm</p>
+          <pre><code data-trim>
+            result = confirm(question);   
+
+            let isBoss = confirm("Are you the boss?");
+            alert( isBoss ); // true if OK is pressed
+          </code></pre>
+        </section>
+        <section>
+          <h4>Type Conversions</h4>
+          <hr />
+          <p>String Conversion</p>
+          <pre><code data-trim>
+            let value = true;
+            alert(typeof value); // boolean
+            
+            value = String(value); // now value is a string "true"
+            alert(typeof value); // string
+          </code></pre>
+          <p>Numeric Conversion</p>
+          <pre><code data-trim>
+            alert( "6" / "2" ); // 3, strings are converted to numbers
+
+            let str = "123";
+            alert(typeof str); // string
+            
+            let num = Number(str); // becomes a number 123
+            
+            alert(typeof num); // number
+          </code></pre>
+          <p>Boolean Conversion</p>
+          <pre><code data-trim>
+            alert( Boolean(1) ); // true
+            alert( Boolean(0) ); // false
+            
+            alert( Boolean("hello") ); // true
+            alert( Boolean("") ); // false
+          </code></pre>
+        </section>
+        <section>
+          <h4>Basic operators, maths</h4>
+          <hr />
+          <p>Terms: “unary”, “binary”, “operand”</p>
+          <dl>
+            <dt>operand</dt>
+            <dd>
+              is what operators are applied to. For instance, in the
+              multiplication of 5 * 2 there are two operands: the left operand
+              is 5 and the right operand is 2. Sometimes, people call these
+              “arguments” instead of “operands”.
+            </dd>
+            <dt>unary</dt>
+            <dd>
+              An operator is unary if it has a single operand. For example, the
+              unary negation - reverses the sign of a number
+              <pre><code data-trim>
+                let x = 1;
+                x = -x;
+                alert( x ); // -1, unary negation was applied
+              </code></pre>
+            </dd>
+            <dt>binary</dt>
+            <dd>
+              An operator is binary if it has two operands. The same minus
+              exists in binary form as well
+              <pre><code data-trim>
+                let x = 1, y = 3;
+                alert( y - x ); // 2, binary minus subtracts values
+              </code></pre>
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Maths</h4>
+          <hr />
+          <ul>
+            <li>Addition +</li>
+            <li>Subtraction -</li>
+            <li>Multiplication *</li>
+            <li>Division /</li>
+            <li>Remainder %</li>
+            <li>Exponentiation **</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Maths</h4>
+          <hr />
+          <p>String concatenation with binary +</p>
+          <iframe
+            style="position: absolute; top: 0; right: 0"
+            src="https://giphy.com/embed/vFbgOpdixK23u"
+            width="240"
+            height="180"
+            frameborder="0"
+            class="giphy-embed"
+            allowfullscreen
+          ></iframe>
+          <pre><code data-trim>
+            let s = "my" + "string";
+            alert(s); // mystring
+
+            alert( '1' + 2 ); // "12"
+            alert( 2 + '1' ); // "21"
+            alert(2 + 2 + '1' ); // "41" and not "221"
+            alert('1' + 2 + 2); // "122" and not "14"
+
+            alert( 6 - '2' ); // 4, converts '2' to a number
+            alert( '6' / '2' ); // 3, converts both operands to numbers
+          </code></pre>
+          <p>Numeric conversion, unary +</p>
+          <pre><code data-trim>
+            // No effect on numbers
+            let x = 1;
+            alert( +x ); // 1
+            
+            let y = -2;
+            alert( +y ); // -2
+            
+            // Converts non-numbers
+            alert( +true ); // 1
+            alert( +"" );   // 0
+          </code></pre>
+          <p>
+            The need to convert strings to numbers arises very often. For
+            example, if we are getting values from HTML form fields, they are
+            usually strings. What if we want to sum them?
+          </p>
+        </section>
+        <section>
+          <h4>Maths</h4>
+          <hr />
+          <p>Assignment</p>
+          <iframe
+            style="position: absolute; top: 0; right: 0"
+            src="https://giphy.com/embed/vFbgOpdixK23u"
+            width="240"
+            height="180"
+            frameborder="0"
+            class="giphy-embed"
+            allowfullscreen
+          ></iframe>
+          <pre><code data-trim>
+            let x = 2 * 2 + 1;
+
+            alert( x ); // 5
+          </code></pre>
+          <p>
+            The call <code>x = value</code> writes the value into x and then
+            returns it.
+          </p>
+          <pre><code data-trim>
+            let a = 1;
+            let b = 2;
+            
+            let c = 3 - (a = b + 1);
+            
+            alert( a ); // 3
+            alert( c ); // 0
+          </code></pre>
+          <pre><code data-trim>
+            ('b'+'a'+ +'🍌'+'a').toUpperCase();
+          </code></pre>
+        </section>
+        <section>
+          <h4>Maths</h4>
+          <hr />
+          <p>Chaining assignments</p>
+          <pre><code data-trim>
+            let a, b, c;
+
+            a = b = c = 2 + 2;
+            
+            alert( a ); // 4
+            alert( b ); // 4
+            alert( c ); // 4
+          </code></pre>
+          <p>Modify-in-place</p>
+          <pre><code data-trim>
+            let n = 2;
+            n += 5; // now n = 7 (same as n = n + 5)
+            n *= 2; // now n = 14 (same as n = n * 2)
+            
+            alert( n ); // 14
+          </code></pre>
+          <p>Increment/decrement</p>
+          <pre><code data-trim>
+            let counter = 2;
+            counter++;        // works the same as counter = counter + 1, but is shorter
+            alert( counter ); // 3
+          </code></pre>
+          <pre><code data-trim>
+            let counter = 2;
+            counter--;        // works the same as counter = counter - 1, but is shorter
+            alert( counter ); // 1
+          </code></pre>
+        </section>
+        <section>
+          <h4>Comparisons</h4>
+          <hr />
+          <ul>
+            <li>Greater/less than: a &gt; b, a &lt; b.</li>
+            <li>Greater/less than or equals: a &gt;= b, a &lt;= b.</li>
+            <li>
+              Equals: a == b, please note the double equality sign == means the
+              equality test, while a single one a = b means an assignment.
+            </li>
+            <li>
+              Not equals: In maths the notation is ≠, but in JavaScript it’s
+              written as a != b.
+            </li>
+          </ul>
+          <pre><code data-trim>
+            alert( 2 > 1 );  // true (correct)
+            alert( 2 == 1 ); // false (wrong)
+            alert( 2 != 1 ); // true (correct)
+
+            let result = 5 > 4; // assign the result of the comparison
+            alert( result ); // true
+          </code></pre>
+          <p><em>FUN FACT</em></p>
+          <pre><code data-trim>
+            alert( 'Z' > 'A' ); // true
+            alert( 'Glow' > 'Glee' ); // true
+            alert( 'Bee' > 'Be' ); // true
+          </code></pre>
+        </section>
+        <section>
+          <h4>Comparisons</h4>
+          <hr />
+          <iframe
+            style="position: absolute; top: 0; right: 0"
+            src="https://giphy.com/embed/T7nRl5WHw7Yru"
+            width="240"
+            height="180"
+            frameborder="0"
+            class="giphy-embed"
+            allowfullscreen
+          ></iframe>
+          <pre><code data-trim>
+            alert( '2' > 1 ); // true, string '2' becomes a number 2
+            alert( '01' == 1 ); // true, string '01' becomes a number 1
+            alert( true == 1 ); // true
+            alert( false == 0 ); // true
+
+            let a = 0;
+            alert( Boolean(a) ); // false
+
+            let b = "0";
+            alert( Boolean(b) ); // true
+
+            alert(a == b); // true!
+          </code></pre>
+        </section>
+        <section>
+          <h4>Comparisons</h4>
+          <hr />
+
+          <p>Strict equality</p>
+          <p>
+            <strong
+              >A strict equality operator === checks the equality without type
+              conversion.
+            </strong>
+          </p>
+          <pre><code data-trim>
+            alert( 0 == false ); // true
+            alert( 0 === false ); // false, because the types are different
+
+            alert( null == undefined ); // true
+            alert( null === undefined ); // false
+
+          </code></pre>
+        </section>
+        <section>
+          <h4>Conditional branching: if, '?'</h4>
+          <hr />
+
+          <p>The “if” statement</p>
+          <pre><code data-trim>
+            let year = prompt('In which year was ECMAScript-2015 specification published?', '');
+
+            if (year == 2015) alert( 'You are right!' );
+
+            if (year == 2015) {
+              alert( "That's correct!" );
+              alert( "You're so smart!" );
+            }
+
+            if (0) { // 0 is falsy
+              ...
+            }
+
+            if (1) { // 1 is truthy
+              ...
+            }
+          </code></pre>
+          <p>The “else” clause</p>
+          <pre><code data-trim>
+            if (year == 2015) {
+              alert( 'You guessed it right!' );
+            } else {
+              alert( 'How can you be so wrong?' ); // any value except 2015
+            }
+          </code></pre>
+        </section>
+        <section>
+          <h4>Conditional branching: if, '?'</h4>
+          <hr />
+
+          <p>Several conditions: “else if”</p>
+          <pre><code data-trim>
+            if (year < 2015) {
+              alert( 'Too early...' );
+            } else if (year > 2015) {
+              alert( 'Too late' );
+            } else {
+              alert( 'Exactly!' );
+            }
+          </code></pre>
+          <p>Conditional operator ‘?’</p>
+          <pre><code data-trim>
+            let accessAllowed;
+            let age = prompt('How old are you?', '');
+            
+            if (age > 18) {
+              accessAllowed = true;
+            } else {
+              accessAllowed = false;
+            }
+            
+            alert(accessAllowed);
+
+            let accessAllowed = (age > 18) ? true : false;
+            let accessAllowed = (age > 18);
+          </code></pre>
         </section>
       </div>
     </div>
