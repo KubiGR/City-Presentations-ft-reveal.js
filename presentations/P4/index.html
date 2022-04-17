@@ -762,7 +762,7 @@
           <hr />
 
           <p>Several conditions: “else if”</p>
-          <pre><code data-trim>
+          <pre><code data-trim><script type="text/template">
             if (year < 2015) {
               alert( 'Too early...' );
             } else if (year > 2015) {
@@ -770,7 +770,7 @@
             } else {
               alert( 'Exactly!' );
             }
-          </code></pre>
+          </script></code></pre>
           <p>Conditional operator ‘?’</p>
           <pre><code data-trim>
             let accessAllowed;
@@ -787,6 +787,719 @@
             let accessAllowed = (age > 18) ? true : false;
             let accessAllowed = (age > 18);
           </code></pre>
+        </section>
+        <section>
+          <h4>Logical operators</h4>
+          <hr />
+
+          <ul>
+            <li><code>||</code> (OR)</li>
+            <li><code>&&</code> (AND)</li>
+            <li><code>!</code> (NOT)</li>
+            <li><code>??</code> (Nullish Coalescing)</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Logical operators</h4>
+          <hr />
+          <p>|| (OR)</p>
+          <pre><code data-trim><script type="text/template">
+            alert( true || true );   // true
+            alert( false || true );  // true
+            alert( true || false );  // true
+            alert( false || false ); // false
+
+            if (1 || 0) { // works just like if( true || false )
+              alert( 'truthy!' );
+            }
+
+            let hour = 12;
+            let isWeekend = true;
+
+            if (hour < 10 || hour > 18 || isWeekend) {
+              alert( 'The office is closed.' ); // it is the weekend
+            }
+          </script></code></pre>
+          <p>OR "||" finds the first truthy value</p>
+          <pre><code data-trim>
+            result = value1 || value2 || value3;
+
+            let firstName = "";
+            let lastName = "";
+            let nickName = "SuperCoder";
+            
+            alert( firstName || lastName || nickName || "Anonymous"); // SuperCoder
+          </code></pre>
+        </section>
+        <section>
+          <h4>Logical operators</h4>
+          <hr />
+          <p>&& (AND)</p>
+          <pre><code data-trim>
+            alert( true && true );   // true
+            alert( false && true );  // false
+            alert( true && false );  // false
+            alert( false && false ); // false
+
+            let hour = 12;
+            let minute = 30;
+            
+            if (hour == 12 && minute == 30) {
+              alert( 'The time is 12:30' );
+            }
+          </code></pre>
+          <p>AND “&&” finds the first falsy value</p>
+          <pre><code data-trim>
+            result = value1 && value2 && value3;
+
+            alert( 1 && 2 && null && 3 ); // null
+            alert( 1 && 2 && 3 ); // 3, the last one
+          </code></pre>
+          <p><em>Precedence of AND && is higher than OR ||</em></p>
+          <pre><code data-trim>
+            a && b || c && d
+            (a && b) || (c && d)
+          </code></pre>
+        </section>
+        <section>
+          <h4>Logical operators</h4>
+          <hr />
+          <p>! (NOT)</p>
+          <pre><code data-trim>
+            alert( !true ); // false
+            alert( !0 ); // true
+
+            alert( !!"non-empty string" ); // true
+            alert( !!null ); // false
+
+            alert( Boolean("non-empty string") ); // true
+            alert( Boolean(null) ); // false
+          </code></pre>
+          <p>
+            <em
+              >The precedence of NOT ! is the highest of all logical operators,
+              so it always executes first, before && or ||.
+            </em>
+          </p>
+        </section>
+        <section>
+          <h4>Logical operators</h4>
+          <hr />
+          <p>Nullish coalescing operator '<code>??</code>'</p>
+          <pre><code data-trim>
+            let user;
+
+            alert(user ?? "Anonymous"); // Anonymous (user not defined)
+
+            user = "John";
+
+            alert(user ?? "Anonymous"); // John (user defined)
+          </code></pre>
+          <p>
+            <em>
+              The common use case for <code>??</code> is to provide a default
+              value.
+            </em>
+          </p>
+          <pre><code data-trim>
+            let firstName = null;
+            let lastName = null;
+            let nickName = "Supercoder";
+            
+            // shows the first defined value:
+            alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // Supercoder
+          </code></pre>
+        </section>
+        <section>
+          <h4>Logical operators</h4>
+          <hr />
+          <p>Nullish coalescing operator '<code>??</code>'</p>
+          <p>Comparison with <code>||</code></p>
+          <ul>
+            <li><code>||</code> returns the first truthy value.</li>
+            <li><code>??</code> returns the first defined value.</li>
+          </ul>
+          <pre><code data-trim>
+            let height = 0;
+
+            alert(height || 100); // 100
+            alert(height ?? 100); // 0
+          </code></pre>
+          <p>
+            <em
+              >The precedence of the <code>??</code> operator is the same as
+              <code>||</code></em
+            >
+          </p>
+          <pre><code data-trim>
+            // without parentheses
+            let area = height ?? 100 * width ?? 50;
+            
+            // ...works this way (not what we want):
+            let area = height ?? (100 * width) ?? 50;
+          </code></pre>
+        </section>
+        <section>
+          <h4>Loops: while and for</h4>
+          <hr />
+          <p>The “while” loop</p>
+          <pre><code data-trim>
+            let i = 3;
+            while (i) { // when i becomes 0, the condition becomes falsy, and the loop stops
+              alert( i );
+              i--;
+            }
+          </code></pre>
+
+          <p>The “do…while” loop</p>
+          <pre><code data-trim><script type="text/template">
+            let i = 0;
+            do {
+              alert( i );
+              i++;
+            } while (i < 3);
+          </script></code></pre>
+
+          <p>The “for” loop</p>
+          <pre><code data-trim><script type="text/template">
+            for (let i = 0; i < 3; i++) { // shows 0, then 1, then 2
+              alert(i);
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Loops: while and for</h4>
+          <hr />
+          <p>
+            <em> Any part of for can be skipped.</em>
+          </p>
+          <pre><code data-trim><script type="text/template">
+            let i = 0; // we have i already declared and assigned
+
+            for (; i < 3; i++) { // no need for "begin"
+              alert( i ); // 0, 1, 2
+            }
+
+            i = 0;
+
+            for (; i < 3;) {
+              alert( i++ );
+            }
+
+            for (;;) {
+              // repeats without limits
+            }
+          </script></code></pre>
+          <p>Breaking the loop</p>
+          <pre><code data-trim>
+            let sum = 0;
+
+            while (true) {
+            
+              let value = +prompt("Enter a number", '');
+            
+              if (!value) break; // (*)
+            
+              sum += value;
+            
+            }
+            alert( 'Sum: ' + sum );
+          </code></pre>
+        </section>
+        <section>
+          <h4>Loops: while and for</h4>
+          <hr />
+          <p>Continue to the next iteration</p>
+          <pre><code data-trim><script type="text/template">
+            for (let i = 0; i < 10; i++) {
+
+              // if true, skip the remaining part of the body
+              if (i % 2 == 0) continue;
+            
+              alert(i); // 1, then 3, 5, 7, 9
+            }
+
+            for (let i = 0; i < 10; i++) {
+
+              if (i % 2) {
+                alert( i );
+              }
+            
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>The "switch" statement</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let a = 2 + 2;
+
+            switch (a) {
+              case 3:
+                alert( 'Too small' );
+                break;
+              case 4:
+                alert( 'Exactly!' );
+                break;
+              case 5:
+                alert( 'Too big' );
+                break;
+              default:
+                alert( "I don't know such values" );
+            }
+          </script></code></pre>
+          <p>
+            <em
+              >If there is no break then the execution continues with the next
+              case without any checks.
+            </em>
+          </p>
+          <pre><code data-trim><script type="text/template">
+            let a = 2 + 2;
+
+            switch (a) {
+              case 3:
+                alert( 'Too small' );
+              case 4:
+                alert( 'Exactly!' );
+              case 5:
+                alert( 'Too big' );
+              default:
+                alert( "I don't know such values" );
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>The "switch" statement</h4>
+          <hr />
+          <p>Grouping of “case”</p>
+          <pre><code data-trim><script type="text/template">
+            let a = 3;
+            switch (a) {
+              case 4:
+                alert('Right!');
+                break;
+              case 3: // (*) grouped two cases
+              case 5:
+                alert('Wrong!');
+                alert("Why don't you take a math class?");
+                break;
+              default:
+                alert('The result is strange. Really.');
+            }
+          </script></code></pre>
+          <p>Type matters</p>
+          <pre><code data-trim><script type="text/template">
+            let arg = prompt("Enter a value?");
+            switch (arg) {
+              case '0':
+              case '1':
+                alert( 'One or zero' );
+                break;
+              case 3:
+                alert( 'Never executes!' );
+                break;
+              default:
+                alert( 'An unknown value' );
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Functions</h4>
+          <hr />
+          <p>Function Declaration</p>
+          <pre><code data-trim><script type="text/template">
+            function showMessage() {
+              alert( 'Hello everyone!' );
+            }
+
+            function name(parameter1, parameter2, ... parameterN) {
+              ...body...
+            }
+
+            showMessage();
+          </script></code></pre>
+          <p>Local variables</p>
+          <pre><code data-trim><script type="text/template">
+            function showMessage() {
+              let message = "Hello, I'm JavaScript!"; // local variable
+            
+              alert( message );
+            }
+            
+            showMessage(); // Hello, I'm JavaScript!
+            
+            alert( message ); // <-- Error! The variable is local to the function
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Functions</h4>
+          <hr />
+          <p>Outer variables</p>
+          <pre><code data-trim><script type="text/template">
+            let userName = 'John';
+
+            function showMessage() {
+              userName = "Bob"; // (1) changed the outer variable
+            
+              let message = 'Hello, ' + userName;
+              alert(message);
+            }
+            
+            alert( userName ); // John before the function call
+            
+            showMessage();
+            
+            alert( userName ); // Bob, the value was modified by the function
+          </script></code></pre>
+          <p>Parameters</p>
+          <pre><code data-trim><script type="text/template">
+            function showMessage(from, text) {
+
+              from = '*' + from + '*'; // make "from" look nicer
+            
+              alert( from + ': ' + text );
+            }
+            
+            let from = "Ann";
+            
+            showMessage(from, "Hello"); // *Ann*: Hello
+            
+            // the value of "from" is the same, the function modified a local copy
+            alert( from ); // Ann
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Functions</h4>
+          <hr />
+          <p>Default values</p>
+          <pre><code data-trim><script type="text/template">
+            function showMessage(from, text = "no text given") {
+              alert( from + ": " + text );
+            }
+            
+            showMessage("Ann"); // Ann: no text given
+
+            function showMessage(from, text = anotherFunction()) {
+              // anotherFunction() only executed if no text given
+              // its result becomes the value of text
+            }
+          </script></code></pre>
+          <p>Returning a value</p>
+          <pre><code data-trim><script type="text/template">
+            function checkAge(age) {
+              if (age >= 18) {
+                return true;
+              } else {
+                return confirm('Do you have permission from your parents?');
+              }
+            }
+            
+            let age = prompt('How old are you?', 18);
+            
+            if ( checkAge(age) ) {
+              alert( 'Access granted' );
+            } else {
+              alert( 'Access denied' );
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Functions</h4>
+          <hr />
+          <p><em>Never add a newline between return and the value </em></p>
+          <pre><code data-trim><script type="text/template">
+            return
+             (some + long + expression + or + whatever * f(a) + f(b))
+
+            return;
+             (some + long + expression + or + whatever * f(a) + f(b))
+
+            return (
+              some + long + expression
+              + or +
+              whatever * f(a) + f(b)
+              )
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Functions</h4>
+          <hr />
+          <p>Naming a function</p>
+          <pre><code data-trim><script type="text/template">
+            showMessage(..)     // shows a message
+            getAge(..)          // returns the age (gets it somehow)
+            calcSum(..)         // calculates a sum and returns the result
+            createForm(..)      // creates a form (and usually returns it)
+            checkPermission(..) // checks a permission, returns true/false
+          </script></code></pre>
+          <p><em>One function – one action </em></p>
+        </section>
+        <section>
+          <h4>Functions</h4>
+          <hr />
+          <p><em>Functions == Comments </em></p>
+          <pre><code data-trim><script type="text/template">
+            function showPrimes(n) {
+              nextPrime: for (let i = 2; i < n; i++) {
+            
+                for (let j = 2; j < i; j++) {
+                  if (i % j == 0) continue nextPrime;
+                }
+            
+                alert( i ); // a prime
+              }
+            }
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            function showPrimes(n) {
+
+              for (let i = 2; i < n; i++) {
+                if (!isPrime(i)) continue;
+            
+                alert(i);  // a prime
+              }
+            }
+            
+            function isPrime(n) {
+              for (let i = 2; i < n; i++) {
+                if ( n % i == 0) return false;
+              }
+              return true;
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Function expressions</h4>
+          <hr />
+          <p>Function is a value</p>
+          <pre><code data-trim><script type="text/template">
+            function sayHi() {
+              alert( "Hello" );
+            }
+
+            let sayHi = function() {
+              alert( "Hello" );
+            };
+
+            alert( sayHi ); // shows the function code
+
+            let func = sayHi;    // (2) copy
+
+            func(); // Hello     // (3) run the copy (it works)!
+            sayHi(); // Hello    //     this still works too (why wouldn't it)
+          </script></code></pre>
+          <p>
+            <em>
+              Please note: there are no parentheses after sayHi. If there were,
+              then func = sayHi() would write the result of the call sayHi()
+              into func, not the function sayHi itself.</em
+            >
+          </p>
+        </section>
+        <section>
+          <h4>Callback functions</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            function ask(question, yes, no) {
+              if (confirm(question)) yes()
+              else no();
+            }
+            
+            function showOk() {
+              alert( "You agreed." );
+            }
+            
+            function showCancel() {
+              alert( "You canceled the execution." );
+            }
+            
+            // usage: functions showOk, showCancel are passed as arguments to ask
+            ask("Do you agree?", showOk, showCancel);
+          </script></code></pre>
+          <p>
+            <em>
+              The arguments showOk and showCancel of ask are called callback
+              functions or just callbacks.
+            </em>
+          </p>
+        </section>
+        <section>
+          <h4>Callback functions</h4>
+          <hr />
+          <p>Function Expression vs Function Declaration</p>
+          <p>
+            <strong
+              >A Function Expression is created when the execution reaches it
+              and is usable only from that moment.
+            </strong>
+          </p>
+          <p>
+            <strong
+              >A Function Declaration can be called earlier than it is defined.
+            </strong>
+          </p>
+          <pre><code data-trim><script type="text/template">
+            sayHi("John"); // Hello, John
+
+            function sayHi(name) {
+              alert( `Hello, ${name}` );
+            }
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            sayHi("John"); // error!
+
+            let sayHi = function(name) {  // (*) no magic any more
+              alert( `Hello, ${name}` );
+            };
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Callback functions</h4>
+          <hr />
+          <p>
+            <em>
+              In strict mode, when a Function Declaration is within a code
+              block, it’s visible everywhere inside that block. But not outside
+              of it.
+            </em>
+          </p>
+          <pre><code data-trim><script type="text/template">
+            let age = 16; // take 16 as an example
+
+            if (age < 18) {
+              welcome();               // \   (runs)
+                                       //  |
+              function welcome() {     //  |
+                alert("Hello!");       //  |  Function Declaration is available
+              }                        //  |  everywhere in the block where it's declared
+                                       //  |
+              welcome();               // /   (runs)
+            
+            } else {
+            
+              function welcome() {
+                alert("Greetings!");
+              }
+            }
+            
+            // Here we're out of curly braces,
+            // so we can not see Function Declarations made inside of them.
+            
+            welcome(); // Error: welcome is not defined
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Callback functions</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let age = prompt("What is your age?", 18);
+
+            let welcome;
+            
+            if (age < 18) {
+            
+              welcome = function() {
+                alert("Hello!");
+              };
+            
+            } else {
+            
+              welcome = function() {
+                alert("Greetings!");
+              };
+            
+            }
+            
+            welcome(); // ok now
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let age = prompt("What is your age?", 18);
+
+            let welcome = (age < 18) ?
+              function() { alert("Hello!"); } :
+              function() { alert("Greetings!"); };
+            
+            welcome(); // ok now
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Callback functions</h4>
+          <hr />
+          <p>When to choose Function Declaration versus Function Expression?</p>
+          <ul>
+            <li>
+              As a rule of thumb, when we need to declare a function, the first
+              to consider is Function Declaration syntax. It gives more freedom
+              in how to organize our code, because we can call such functions
+              before they are declared.
+            </li>
+            <li>
+              That’s also better for readability, as it’s easier to look up
+              function f(…) {…} in the code than let f = function(…) {…};.
+              Function Declarations are more “eye-catching”.
+            </li>
+            <li>
+              …But if a Function Declaration does not suit us for some reason,
+              or we need a conditional declaration (we’ve just seen an example),
+              then Function Expression should be used.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Arrow functions, the basics</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let func = (arg1, arg2, ..., argN) => expression;
+
+            let func = function(arg1, arg2, ..., argN) {
+              return expression;
+            };
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let sum = (a, b) => a + b;
+
+            /* This arrow function is a shorter form of:
+            
+            let sum = function(a, b) {
+              return a + b;
+            };
+            */
+            
+            alert( sum(1, 2) ); // 3
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let double = n => n * 2;
+            // roughly the same as: let double = function(n) { return n * 2 }
+            
+            alert( double(3) ); // 6
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let sayHi = () => alert("Hello!");
+
+            sayHi();
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Arrow functions, the basics</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let age = prompt("What is your age?", 18);
+
+            let welcome = (age < 18) ?
+              () => alert('Hello!') :
+              () => alert("Greetings!");
+            
+            welcome();
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let sum = (a, b) => {  // the curly brace opens a multiline function
+              let result = a + b;
+              return result; // if we use curly braces, then we need an explicit "return"
+            };
+            
+            alert( sum(1, 2) ); // 3
+          </script></code></pre>
         </section>
       </div>
     </div>
