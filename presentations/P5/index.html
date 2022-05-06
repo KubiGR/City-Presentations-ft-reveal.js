@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Javascript 2</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Javascript <sub style="font-size: small">pt. 2</sub></h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <h4>Objects</h4>
+          <hr />
+          <p>
+            An object can be created with figure brackets {…} with an optional
+            list of properties. A property is a “key: value” pair, where key is
+            a string (also called a “property name”), and value can be anything.
+          </p>
+          <pre><code data-trim><script type="text/template">
+              let user = new Object(); // "object constructor" syntax
+              let user = {};  // "object literal" syntax
+
+              let user = {     // an object
+                name: "John",  // by key "name" store value "John"
+                age: 30,      // by key "age" store value 30
+              };
+          </script></code></pre>
+          <p>
+            In the user object, there are two properties: The first property has
+            the name "name" and the value "John". The second one has the name
+            "age" and the value 30.
+          </p>
+          <pre><code data-trim><script type="text/template">
+              // get property values of the object:
+              alert( user.name ); // John
+              alert( user.age ); // 30
+
+              user.isAdmin = true;
+
+              delete user.age;
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Square brackets</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            // this would give a syntax error
+            user.likes birds = true
+
+            // set
+            user["likes birds"] = true;
+
+            // get
+            alert(user["likes birds"]); // true
+
+            // delete
+            delete user["likes birds"];
+
+            let key = "likes birds";
+
+            // same as user["likes birds"] = true;
+            user[key] = true;
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Property value shorthand</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            function makeUser(name, age) {
+              return {
+                name: name,
+                age: age,
+                // ...other properties
+              };
+            }
+            
+            let user = makeUser("John", 30);
+            alert(user.name); // John
+
+            function makeUser(name, age) {
+              return {
+                name, // same as name: name
+                age,  // same as age: age
+                // ...
+              };
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Property existence test, “in” operator</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let user = {};
+
+            alert( user.noSuchProperty === undefined ); // true means "no such property"
+
+            let user = { name: "John", age: 30 };
+
+            alert( "age" in user ); // true, user.age exists
+            alert( "blabla" in user ); // false, user.blabla doesn't exist
+
+            let obj = {
+              test: undefined
+            };
+            
+            alert( obj.test ); // it's undefined, so - no such property?
+            
+            alert( "test" in obj ); // true, the property does exist!
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>The “for…in” loop</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let user = {
+              name: "John",
+              age: 30,
+              isAdmin: true
+            };
+            
+            for (let key in user) {
+              // keys
+              alert( key );  // name, age, isAdmin
+              // values for the keys
+              alert( user[key] ); // John, 30, true
+            }
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let codes = {
+              "49": "Germany",
+              "41": "Switzerland",
+              "44": "Great Britain",
+              // ..,
+              "1": "USA"
+            };
+            
+            for (let code in codes) {
+              alert(code); // 1, 41, 44, 49
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Object references</h4>
+          <hr />
+          <p>
+            A variable assigned to an object stores not the object itself, but
+            its “address in memory” – in other words “a reference” to it.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            let user = { name: 'John' };
+
+            let admin = user;
+            
+            admin.name = 'Pete'; // changed by the "admin" reference
+            
+            alert(user.name); // 'Pete', changes are seen from the "user" reference
+          </script></code></pre>
+          <p>Comparison by reference</p>
+          <pre><code data-trim><script type="text/template">
+            let a = {};
+            let b = a; // copy the reference
+            
+            alert( a == b ); // true, both variables reference the same object
+            alert( a === b ); // true
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let a = {};
+            let b = {}; // two independent objects
+            
+            alert( a == b ); // false
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Object methods, "this"</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            user = {
+              sayHi: function() {
+                alert("Hello");
+              }
+            };
+            
+            // method shorthand looks better, right?
+            user = {
+              sayHi() { // same as "sayHi: function(){...}"
+                alert("Hello");
+              }
+            };
+          </script></code></pre>
+          <p>
+            It’s common that an object method needs to access the information
+            stored in the object to do its job. <br />
+
+            For instance, the code inside user.sayHi() may need the name of the
+            user. <br />
+
+            To access the object, a method can use the this keyword. <br />
+
+            The value of this is the object “before dot”, the one used to call
+            the method.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            let user = {
+              name: "John",
+              age: 30,
+            
+              sayHi() {
+                // "this" is the "current object"
+                alert(this.name);
+              }
+            
+            };
+            
+            user.sayHi(); // John
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>“this” is not bound</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            function sayHi() {
+              alert( this.name );
+            }
+          </script></code></pre>
+          <p>
+            The value of this is evaluated during the run-time, depending on the
+            context.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            let user = { name: "John" };
+            let admin = { name: "Admin" };
+            
+            function sayHi() {
+              alert( this.name );
+            }
+            
+            // use the same function in two objects
+            user.f = sayHi;
+            admin.f = sayHi;
+            
+            // these calls have different this
+            // "this" inside the function is the object "before the dot"
+            user.f(); // John  (this == user)
+            admin.f(); // Admin  (this == admin)
+            
+            admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
+          </script></code></pre>
+          <p>
+            The concept of run-time evaluated this has both pluses and minuses.
+            On the one hand, a function can be reused for different objects. On
+            the other hand, the greater flexibility creates more possibilities
+            for mistakes.
+          </p>
+        </section>
+        <section>
+          <h4>Arrow functions have no “this”</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let user = {
+              firstName: "Ilya",
+              sayHi() {
+                let arrow = () => alert(this.firstName);
+                arrow();
+              }
+            };
+            
+            user.sayHi(); // Ilya
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Constructor, operator "new"</h4>
+          <hr />
+          <p class="text-start">
+            Constructor functions technically are regular functions. There are
+            two conventions though:
+          </p>
+          <ul>
+            <li>They are named with capital letter first.</li>
+            <li>They should be executed only with "new" operator.</li>
+          </ul>
+          <pre><code data-trim><script type="text/template">
+            function User(name) {
+              this.name = name;
+              this.isAdmin = false;
+            }
+            
+            let user = new User("Jack");
+            
+            alert(user.name); // Jack
+            alert(user.isAdmin); // false
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            function User(name) {
+              // this = {};  (implicitly)
+            
+              // add properties to this
+              this.name = name;
+              this.isAdmin = false;
+            
+              // return this;  (implicitly)
+            }
+          </script></code></pre>
+          <p>
+            The main purpose of constructors – to implement reusable object
+            creation code.
+          </p>
+        </section>
+        <section>
+          <h4>Methods of primitives</h4>
+          <hr />
+          <p class="text-start">
+            One of the best things about objects is that we can store a function
+            as one of its properties.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            let john = {
+              name: "John",
+              sayHi: function() {
+                alert("Hi buddy!");
+              }
+            };
+            
+            john.sayHi(); // Hi buddy!
+          </script></code></pre>
+          <p class="text-start">
+            Objects are “heavier” than primitives. They require additional
+            resources to support the internal machinery.
+          </p>
+          <ul>
+            <li>Primitives are still primitive. A single value, as desired.</li>
+            <li>
+              The language allows access to methods and properties of strings,
+              numbers, booleans and symbols.
+            </li>
+            <li>
+              In order for that to work, a special “object wrapper” that
+              provides the extra functionality is created, and then is
+              destroyed.
+            </li>
+          </ul>
+          <pre><code data-trim><script type="text/template">
+            let str = "Hello";
+
+            alert( str.toUpperCase() ); // HELLO
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Numbers</h4>
+          <hr />
+          <p class="text-start">toString(base)</p>
+          <pre><code data-trim><script type="text/template">
+            let num = 255;
+
+            alert( num.toString(16) );  // ff
+            alert( num.toString(2) );   // 11111111
+          </script></code></pre>
+          <p class="text-start">
+            Math.floor <br />
+            Rounds down: 3.1 becomes 3, and -1.1 becomes -2.<br />
+            Math.ceil <br />Rounds up: 3.1 becomes 4, and -1.1 becomes -1.<br />
+            Math.round<br />
+            Rounds to the nearest integer: 3.1 becomes 3, 3.6 becomes 4, the
+            middle case: 3.5 rounds up to 4 too.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            alert( parseInt('100px') ); // 100
+            alert( parseFloat('12.5em') ); // 12.5
+            
+            alert( parseInt('12.3') ); // 12, only the integer part is returned
+            alert( parseFloat('12.3.4') ); // 12.3, the second point stops the reading
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Strings</h4>
+          <hr />
+          <p class="text-start">Quotes</p>
+          <pre><code data-trim><script type="text/template">
+            let single = 'single-quoted';
+            let double = "double-quoted";
+            
+            let backticks = `backticks`;
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            function sum(a, b) {
+              return a + b;
+            }
+            
+            alert(`1 + 2 = ${sum(1, 2)}.`); // 1 + 2 = 3.
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let str1 = "Hello\nWorld"; // two lines using a "newline symbol"
+
+            // two lines using a normal newline and backticks
+            let str2 = `Hello
+            World`;
+            
+            alert(str1 == str2); // true
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Strings</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            alert( `My\n`.length ); // 3
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let str = `Hello`;
+
+            // the first character
+            alert( str[0] ); // H
+            alert( str.charAt(0) ); // H
+            
+            // the last character
+            alert( str[str.length - 1] ); // o
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            alert( 'Interface'.toUpperCase() ); // INTERFACE
+            alert( 'Interface'.toLowerCase() ); // interface
+            alert( 'Interface'[0].toLowerCase() ); // 'i'
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            alert( "Widget with id".includes("Widget") ); // true
+            alert( "Hello".includes("Bye") ); // false
+            let str = "stringify";
+
+            // start at the 4th position from the right, end at the 1st from the right
+            alert( str.slice(-4, -1) ); // 'gif'
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Arrays</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            let arr = new Array();
+            let arr = [];  
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            let fruits = ["Apple", "Orange", "Plum"];        
+            fruits[2] = 'Pear'; // now ["Apple", "Orange", "Pear"]
+            fruits[3] = 'Lemon'; // now ["Apple", "Orange", "Pear", "Lemon"]
+            alert( fruits.length ); // 4
+            alert( fruits ); // Apple,Orange,Plum, Lemon
+            alert( fruits.pop() ); // remove "Lemon" and alert it
+            fruits.push("Pear"); // Apple,Orange,Plum, Lemon, Pear
+            alert( fruits.shift() ); // remove Apple and alert it
+            fruits.unshift('Apple'); // Apple, Orange, Pear
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            for (let fruit of fruits) {
+              alert( fruit );
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Arrays</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            arr.forEach(function(item, index, array) {
+              // ... do something with item
+            });
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            ["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
+              alert(`${item} is at index ${index} in ${array}`);
+            });
+          </script></code></pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
