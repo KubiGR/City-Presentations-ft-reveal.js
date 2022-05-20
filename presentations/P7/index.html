@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Javascript on the Browser</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Browser Javascript</h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <h4>Browser environment</h4>
+          <hr />
+          <p class="text-start">
+            There’s a “root” object called window. It has two roles:
+          </p>
+
+          <ul>
+            <li>it is a global object for JavaScript code</li>
+            <li>
+              it represents the “browser window” and provides methods to control
+              it
+            </li>
+          </ul>
+          <img class="r-stretch" src="../../assets/P7_global.png" />
+        </section>
+        <section>
+          <h4>Browser environment</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            // as a global object
+            function sayHi() {
+              alert("Hello");
+            }
+            
+            // global functions are methods of the global object:
+            window.sayHi();
+
+            // as a browser window
+            alert(window.innerHeight); // inner window height
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>DOM (Document Object Model)</h4>
+          <hr />
+          <p class="text-start">
+            Document Object Model, or DOM for short, represents all page content
+            as objects that can be modified.
+          </p>
+          <p class="text-start">
+            The document object is the main “entry point” to the page. We can
+            change or create anything on the page using it.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            // change the background color to red
+            document.body.style.background = "red";
+            
+            // change it back after 1 second
+            setTimeout(() => document.body.style.background = "", 1000);
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>BOM (Browser Object Model)</h4>
+          <hr />
+          <p class="text-start">
+            The Browser Object Model (BOM) represents additional objects
+            provided by the browser (host environment) for working with
+            everything except the document.
+          </p>
+          <ul>
+            <li>
+              The navigator object provides background information about the
+              browser and the operating system.
+            </li>
+            <li>
+              The location object allows us to read the current URL and can
+              redirect the browser to a new one.
+            </li>
+          </ul>
+          <pre><code data-trim><script type="text/template">
+            alert(location.href); // shows current URL
+            if (confirm("Go to Wikipedia?")) {
+              location.href = "https://wikipedia.org"; // redirect the browser to another URL
+            }
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>DOM tree</h4>
+          <hr />
+          <p class="text-start">
+            According to the Document Object Model (DOM), every HTML tag is an
+            object. Nested tags are “children” of the enclosing one. The text
+            inside a tag is an object as well.
+          </p>
+          <p class="text-start">
+            For example, document.body is the object representing the
+            &lt;body&gt; tag.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            document.body.style.background = 'red';
+
+            setTimeout(() => document.body.style.background = '', 3000);
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Node types</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex-basis: 50%">
+              <pre><code data-trim><script type="text/template">
+                <!DOCTYPE HTML>
+                <html>
+                <body>
+                  The truth about elk.
+                  <ol>
+                    <li>An elk is a smart</li>
+                    <!-- comment -->
+                    <li>...and cunning animal!</li>
+                  </ol>
+                </body>
+                </html>
+              </script></code></pre>
+              <ul>
+                <li>Tags are element nodes</li>
+                <li>The text inside elements are text nodes</li>
+                <li>Comments are comment nodes</li>
+              </ul>
+              <p>
+                Everything in HTML, even comments, becomes a part of the DOM.
+              </p>
+            </div>
+            <div style="flex-basis: 50%">
+              <img src="../../assets/P7_nodes.png" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Walking the DOM</h4>
+          <hr />
+          <p class="text-start">
+            All operations on the DOM start with the document object. That’s the
+            main “entry point” to DOM. From it we can access any node.
+          </p>
+          <div class="d-flex">
+            <div style="flex-basis: 50%">
+              <img class="r-stretch" src="../../assets/P7_walk.png" />
+            </div>
+            <div style="flex-basis: 50%">
+              <ul>
+                <li>&lt;html&gt; = document.documentElement</li>
+                <li>&lt;body&gt; = document.body</li>
+                <li>&lt;head&gt; = document.head</li>
+                <li>Children: childNodes, firstChild, lastChild</li>
+                <li>Siblings: nextSibling, previousSibling</li>
+                <li>Parent: parentNode</li>
+                <h4><em>Element-only navigation</em></h4>
+                <li>
+                  Children: children , firstElementChild, lastElementChild
+                </li>
+                <li>Siblings: previousElementSibling, nextElementSibling</li>
+                <li>Parent: parentElement</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Searching the DOM</h4>
+          <hr />
+          <p class="text-start">
+            document.getElementById or just id: If an element has the id
+            attribute, we can get the element using the method
+            document.getElementById(id), no matter where it is.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            <div id="elem">
+              <div id="elem-content">Element</div>
+            </div>
+            
+            <script>
+              // get the element
+              let elem = document.getElementById('elem');
+            
+              // make its background red
+              elem.style.background = 'red';
+
+              // elem is a reference to DOM-element with id="elem"
+              elem.style.background = 'red';
+
+              // id="elem-content" has a hyphen inside, so it can't be a variable name
+              // ...but we can access it using square brackets: window['elem-content']
+          </script></code></pre>
+          <h4><em>The id must be unique </em></h4>
+        </section>
+        <section>
+          <h4>Searching the DOM</h4>
+          <hr />
+          <p class="text-start">querySelectorAll & querySelector</p>
+          <pre><code data-trim><script type="text/template">
+            <ul>
+              <li>The</li>
+              <li>test</li>
+            </ul>
+            <ul>
+              <li>has</li>
+              <li>passed</li>
+            </ul>
+            <script>
+              let elements = document.querySelectorAll('ul > li:last-child');
+            
+              for (let elem of elements) {
+                alert(elem.innerHTML); // "test", "passed"
+              }
+
+              // elem.querySelector(css) is the same as elem.querySelectorAll(css)[0]
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>DOM contents</h4>
+          <hr />
+          <p class="text-start">innerHTML: the contents</p>
+          <pre><code data-trim><script type="text/template">
+            <body>
+              <p>A paragraph</p>
+              <div>A div</div>
+            
+              script
+                alert( document.body.innerHTML ); // read the current contents
+                document.body.innerHTML = 'The new BODY!'; // replace it
+              script
+            
+            </body>
+          </script></code></pre>
+          <p class="text-start">outerHTML: full HTML of the element</p>
+          <pre><code data-trim><script type="text/template">
+            <div id="elem">Hello <b>World</b></div>
+
+            script
+              alert(elem.outerHTML); // <div id="elem">Hello <b>World</b></div>
+            script
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>HTML attributes</h4>
+          <hr />
+          <p class="text-start">
+            In HTML, tags may have attributes. When the browser parses the HTML
+            to create DOM objects for tags, it recognizes standard attributes
+            and creates DOM properties from them.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            <body id="body" type="...">
+              <input id="input" type="text">
+              script
+                alert(input.type); // text
+                alert(body.type); // undefined: DOM property not created, because it's non-standard
+              script
+            </body>
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Modifying the document</h4>
+          <hr />
+          <p class="text-start">Creating an element</p>
+          <pre><code data-trim><script type="text/template">
+            // 1. Create <div> element
+            let div = document.createElement('div');
+            
+            // 2. Set its class to "alert"
+            div.className = "alert";
+            
+            // 3. Fill it with the content
+            div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+          </script></code></pre>
+          <p class="text-start">
+            To make the div show up, we need to insert it somewhere into
+            document. For instance, into &lt;body&gt; element, referenced by
+            document.body.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            document.body.append(div);
+          </script></code></pre>
+          <img src="../../assets/P7_insertion.png" />
+        </section>
+        <section>
+          <h4>Styles and classes</h4>
+          <hr />
+          <p class="text-start">className and classList</p>
+          <pre><code data-trim><script type="text/template">
+            <body class="main page">
+              script
+                alert(document.body.className); // main page
+
+                // add a class
+                document.body.classList.add('article');
+            
+                alert(document.body.className); // main page article
+              script
+            </body>
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            Methods of classList:
+
+            elem.classList.add/remove("class") // adds/removes the class.
+            elem.classList.toggle("class") // adds the class if it doesn’t exist, otherwise removes it.
+            elem.classList.contains("class") // checks for the given class, returns true/false.
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Styles and classes</h4>
+          <hr />
+          <p class="text-start">Element style</p>
+          <pre><code data-trim><script type="text/template">
+            elem.style.width="100px"
+
+            background-color  => elem.style.backgroundColor
+            z-index           => elem.style.zIndex
+            border-left-width => elem.style.borderLeftWidth
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Browser events</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            Mouse events:
+
+            click // when the mouse clicks on an element (touchscreen devices generate it on a tap).
+            contextmenu // when the mouse right-clicks on an element.
+            mouseover / mouseout // when the mouse cursor comes over / leaves an element.
+            mousedown / mouseup // when the mouse button is pressed / released over an element.
+            mousemove // when the mouse is moved.
+
+            Keyboard events:
+            
+            keydown and keyup // when a keyboard key is pressed and released.
+
+            Form element events:
+            
+            submit // when the visitor submits a <form>.
+            focus // when the visitor focuses on an element, e.g. on an <input>.
+
+            Document events:
+            
+            DOMContentLoaded // when the HTML is loaded and processed, DOM is fully built.
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Event handlers</h4>
+          <hr />
+          <p class="text-start">
+            To react on events we can assign a handler – a function that runs in
+            case of an event.
+          </p>
+          <p class="text-start">HTML-attribute</p>
+          <pre><code data-trim><script type="text/template">
+            <input value="Click me" onclick="alert('Click!')" type="button">
+
+            script
+              function countRabbits() {
+                for(let i=1; i<=3; i++) {
+                  alert("Rabbit number " + i);
+                }
+              }
+            script
+            
+            <input type="button" onclick="countRabbits()" value="Count rabbits!">
+          </script></code></pre>
+          <p class="text-start">DOM property</p>
+          <pre><code data-trim><script type="text/template">
+            <input id="elem" type="button" value="Click me">
+            script
+              elem.onclick = function() {
+                alert('Thank you');
+              };
+            script
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Accessing the element: this</h4>
+          <hr />
+          <p class="text-start">
+            The value of this inside a handler is the element. The one which has
+            the handler on it.
+          </p>
+          <pre><code data-trim><script type="text/template">
+            <button onclick="alert(this.innerHTML)">Click me</button>
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Possible mistakes</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            // right
+            button.onclick = sayThanks;
+            
+            // wrong
+            button.onclick = sayThanks();    
+            
+            <input type="button" id="button" onclick="sayThanks()">
+
+            button.onclick = function() {
+              sayThanks(); // <-- the attribute content goes here
+            };
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>addEventListener</h4>
+          <hr />
+          <pre><code data-trim><script type="text/template">
+            input.onclick = function() { alert(1); }
+            // ...
+            input.onclick = function() { alert(2); } // replaces the previous handler
+
+
+          </script></code></pre>
+          <pre><code data-trim><script type="text/template">
+            element.addEventListener(event, handler, [options]);
+
+            elem.addEventListener( "click" , () => alert('Thanks!'));
+            // ....
+            elem.removeEventListener( "click", () => alert('Thanks!'));
+
+            function handler() {
+              alert( 'Thanks!' );
+            }
+
+            input.addEventListener("click", handler);
+            // ....
+            input.removeEventListener("click", handler);
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Event object</h4>
+          <hr />
+          <p class="text-start">
+            To properly handle an event we’d want to know more about what’s
+            happened. Not just a “click” or a “keydown”, but what were the
+            pointer coordinates? Which key was pressed?
+          </p>
+          <pre><code data-trim><script type="text/template">
+            <input type="button" value="Click me" id="elem">
+
+            script
+              elem.onclick = function(event) {
+                // show event type, element and coordinates of the click
+                alert(event.type + " at " + event.currentTarget);
+                alert("Coordinates: " + event.clientX + ":" + event.clientY);
+              };
+            script
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Browser default actions</h4>
+          <hr />
+          <p class="text-start">
+            Many events automatically lead to certain actions performed by the
+            browser.
+          </p>
+          <ul>
+            <li>A click on a link – initiates navigation to its URL.</li>
+            <li>
+              A click on a form submit button – initiates its submission to the
+              server.
+            </li>
+            <li>
+              Pressing a mouse button over a text and moving it – selects the
+              text.
+            </li>
+          </ul>
+          <pre><code data-trim><script type="text/template">
+            <a href="/" onclick="return false">Click here</a>
+            or
+            <a href="/" onclick="event.preventDefault()">here</a>
+          </script></code></pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
