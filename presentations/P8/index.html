@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Javascript on the Browser</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Javascript <sub style="font-size: small">pt. 3</sub></h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <h4>Application Programming Interface (API)</h4>
+          <hr />
+          <p class="text-start">
+            Allows one piece of software (in our case web application) to talk
+            to another.
+          </p>
+
+          <p class="text-start">
+            APIs are everywhere: software libraries, OS APIs, remote APIs,
+            smartphone APIs, audio/video APIs, web APIs etc.
+          </p>
+          <p class="text-start">
+            Different types of web APIs exist but most common is a REST API
+          </p>
+          <ul>
+            <li>REpresentational State Transfer (REST)</li>
+            <li>Works mostly like a website over HTTP protocol</li>
+            <li>Stateless, Cacheable, Client-Server</li>
+            <li>
+              When you make an API request, you (most frequently) get the
+              response back in JSON
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Request - Response API Example</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex-basis: 50%">
+              <p class="text-start">
+                a GET request to the Instagram API for photo locations from a
+                set of longitude and latitude coordinates for New York City
+                (40.7127° N, 74.0059° W):
+              </p>
+              <img src="../../assets/P8_rest_request.png" />
+              <p class="text-start">
+                will return the JSON response from Instagram seen on the right.
+                You can take the Instagram data and integrate it into your own
+                system.
+              </p>
+            </div>
+            <div style="flex-basis: 50%">
+              <img src="../../assets/P8_rest_response.png" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Understanding API Usage</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex-basis: 50%">
+              <p class="text-start">Reservation Systems</p>
+              <ul>
+                <li>By using APIs from providers</li>
+                <li>
+                  When you use the web application
+                  www.reserveahotelroomthroughmarika.com to make a reservation
+                  for a double bed room at MitsosPalace in Kalithea Chalkidiki,
+                  Marika (offering booking service) is using the API of Mitsos’
+                  (provider) to confirm the trip she sourced it from.
+                </li>
+              </ul>
+            </div>
+            <div style="flex-basis: 50%">
+              <img
+                style="filter: invert(0.95)"
+                src="../../assets/P8_booking_apis.png"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Why are APIs useful?</h4>
+          <hr />
+          <ul>
+            <li>Automation and efficiency</li>
+            <li>Accelerates application development process</li>
+            <li>Wider reach</li>
+            <li>Increases an application’s functionality</li>
+            <li>Promotes innovation</li>
+          </ul>
+          <div>
+            <a href="https://www.programmableweb.com/apis/directory"
+              >API Directory</a
+            >
+          </div>
+        </section>
+        <section>
+          <h4>JSON - What is it?</h4>
+          <hr />
+          <ul>
+            <li>JSON is short for JavaScript Object Notation</li>
+            <li>
+              It is lightweight text-based open standard data-interchange format
+            </li>
+            <ul>
+              <li>
+                a simple, text-based way to store and transmit structured data
+              </li>
+              <li>
+                it provides a human-readable collection of data that can be
+                accessed in a logical manner.
+              </li>
+            </ul>
+            <li>It was popularized by Douglas Crockford (2006).</li>
+            <li>
+              A JSON object can be stored in its own file, which is basically
+              just a text file with an extension of .json, and a media (MIME)
+              type of application/json.
+            </li>
+            <li>JSON has taken over the world!</li>
+          </ul>
+        </section>
+        <section>
+          <h4>JSON - What does it look like?</h4>
+          <hr />
+          <div class="d-flex">
+            <div
+              class="d-flex flex-column justify-content-center"
+              style="flex-basis: 50%"
+            >
+              <ul>
+                <li>
+                  Suppose you made a Java class that had as privates the keys
+                  that you see in this JSON.
+                </li>
+                <li>What class name would you give to this group of data?</li>
+              </ul>
+            </div>
+            <div style="flex-basis: 50%">
+              <img
+                style="filter: invert(0.95)"
+                src="../../assets/P8_json_example.png"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>JSON Syntax</h4>
+          <hr />
+          <ul>
+            <li>
+              JSON syntax is derived from JavaScript object notation syntax:
+            </li>
+            <ul>
+              <li>Data is in name/value pairs</li>
+              <ul>
+                <li>
+                  A name/value pair consists of a field name (key) in double
+                  quotes, followed by a : followed by a value.
+                </li>
+                <li>Example: { "name":"Mitsos" }</li>
+              </ul>
+              <li>Data is separated by commas</li>
+              <ul>
+                <li>
+                  Example: { "model":"Mustang" , "color":"Red", "year":2010 }
+                </li>
+              </ul>
+              <li>Curly braces hold objects</li>
+              <ul>
+                <li>
+                  Example: { car: { "model":"Mustang" , "color":"Red",
+                  "year":2010 } }
+                </li>
+              </ul>
+              <li>Square brackets hold arrays</li>
+              <ul>
+                <li>Example: { "students":[ "Mitsos", "Kitsos", "Litsos"] }</li>
+              </ul>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h4>JSON Syntax</h4>
+          <hr />
+          <table>
+            <tr>
+              <td>Number</td>
+              <td>
+                integer or floating point, e.g. { “age”:30 } or {
+                “salary”:2340.68 }
+              </td>
+            </tr>
+            <tr>
+              <td>String</td>
+              <td>in double quotes, e.g. { “firstname”:“mitsos” }</td>
+            </tr>
+            <tr>
+              <td>Boolean</td>
+              <td>true or false, e.g. { “pass”:false }</td>
+            </tr>
+            <tr>
+              <td>Array</td>
+              <td>
+                collection of values, e.g. { “employees”:
+                [“Mitsos”,“Kitsos”,“Ritsos”] }
+              </td>
+            </tr>
+            <tr>
+              <td>Object</td>
+              <td>
+                e.g. { "employee": { "id":5, "name":"Mitsos",
+                "position":"contract killer" } }
+              </td>
+            </tr>
+            <tr>
+              <td>Null</td>
+              <td>e.g. { "phonenumber":null }</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h4>JSON - Some Notes</h4>
+          <hr />
+          <ul>
+            <li>
+              JSON is purely a data format — it contains only properties, no
+              methods.
+            </li>
+            <li>
+              JSON requires double quotes to be used around strings and property
+              names.
+            </li>
+            <li>
+              Even a single misplaced comma or colon can cause a JSON file to go
+              wrong, and not work. You should validate any data you are
+              attempting to use (computer-generated JSON is less likely to
+              include errors).
+            </li>
+            <li>
+              JSON can actually take the form of any data type that is valid for
+              inclusion inside JSON, not just arrays or objects. For example, a
+              single string or number would be a valid JSON object.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>JSON - Accessing the data</h4>
+          <hr />
+          <img
+            src="../../assets/P8_json_access.png"
+            class="r-stretch"
+            style="filter: invert(0.95)"
+          />
+        </section>
+        <section>
+          <h4>JSON and JavaScript - parse()</h4>
+          <hr />
+          <div class="d-flex">
+            <div
+              class="d-flex flex-column justify-content-center"
+              style="flex-basis: 50%"
+            >
+              <ul>
+                <li>
+                  Your web app may request and receive JSON data from a server
+                </li>
+                <ul>
+                  <li>This data will (most likely) be returned as a STRING</li>
+                </ul>
+                <li>
+                  We will need to parse the data so that it becomes a JavaScript
+                  object.
+                </li>
+                <ul>
+                  <li>To do this, we use the parse() function</li>
+                </ul>
+              </ul>
+            </div>
+            <div style="flex-basis: 50%">
+              <img
+                style="filter: invert(0.95)"
+                src="../../assets/P8_json_parse.png"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>JSON and JavaScript - stringify()</h4>
+          <hr />
+          <div class="d-flex">
+            <div
+              class="d-flex flex-column justify-content-center"
+              style="flex-basis: 50%"
+            >
+              <ul>
+                <li>Your web app may need to send JSON data to a server</li>
+                <ul>
+                  <li>Data can only be send as text (a string)</li>
+                </ul>
+                <li>
+                  You will need to convert a JavaScript object into a string
+                </li>
+                <ul>
+                  <li>To do this, we use the stringify() function</li>
+                </ul>
+              </ul>
+            </div>
+            <div style="flex-basis: 50%">
+              <img
+                style="filter: invert(0.95)"
+                src="../../assets/P8_json_stringify.png"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>JavaScript Callback Functions</h4>
+          <hr />
+          <ul>
+            <li>
+              A callback is a function that is to be executed after another
+              function has finished executing — hence the name 'call back'.
+            </li>
+            <li>In JavaScript, functions are objects. Because of this:</li>
+            <ul>
+              <li>functions can take functions as arguments</li>
+              <li>and can be returned by other functions</li>
+            </ul>
+            <li>Functions that do this are called higher-order functions.</li>
+            <li>
+              Any function that is passed as an argument is called a callback
+              function.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>AJAX - What is it?</h4>
+          <hr />
+          <ul>
+            <li>AJAX stands for Asynchronous JavaScript And XML</li>
+            <li>
+              AJAX is a technique to send/receive data to/from server
+              asynchronously without reloading the whole web page.
+            </li>
+            <li>
+              It is a group of inter-related technologies like JavaScript, DOM,
+              XML, HTML/XHTML, CSS, XMLHttpRequest etc.
+            </li>
+            <li>
+              An XMLHttpRequest object is used for asynchronous communication
+              between client and server: it performs the operations:
+            </li>
+            <ul>
+              <li>Sends data from the client in the background</li>
+              <li>Receives the data from the server</li>
+              <li>Updates the web page without reloading it</li>
+            </ul>
+            <li>Where is AJAX used? EVERYWHERE!</li>
+          </ul>
+        </section>
+        <section>
+          <h4>How Ajax Works</h4>
+          <hr />
+          <div class="d-flex">
+            <div
+              class="d-flex flex-column justify-content-center"
+              style="flex-basis: 50%"
+            >
+              <ol>
+                <li>
+                  User sends a request from the UI and a JavaScript call goes to
+                  XMLHttpRequest object.
+                </li>
+                <li>
+                  HTTP Request is sent to the server by XMLHttpRequest object.
+                </li>
+                <li>
+                  Server interacts with the database (using Node, PHP, Python,
+                  Ruby, .NET etc.)
+                </li>
+                <li>Data is retrieved.</li>
+                <li>
+                  Server sends data (JSON,XML) to the XMLHttpRequest callback
+                  function.
+                </li>
+                <li>HTML and CSS data is displayed on the browser.</li>
+              </ol>
+            </div>
+            <div
+              class="d-flex flex-column justify-content-center"
+              style="flex-basis: 50%"
+            >
+              <img
+                style="filter: invert(0.95)"
+                src="../../assets/P8_ajax.png"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Let’s work on an example ...</h4>
+          <hr />
+          <a href="EX1" style="position: absolute; top: 0; right: 0">
+            <img class="m-0 mw-100 mh-100" src="../../assets/click_me.png" />
+          </a>
+          <ul>
+            <li>The JavaScript and JSON super students test:</li>
+            <ul>
+              <li>file json/heroes/file/heroes.json is a JSON file</li>
+              <li>
+                file json/heroes/super.html is a file that uses JavaScript to
+                read the above JSON file
+              </li>
+            </ul>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

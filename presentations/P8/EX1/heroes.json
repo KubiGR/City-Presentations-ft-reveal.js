@@ -1,0 +1,20 @@
+{
+  "teamName": "Justice League",
+  "homeTown": "Hall of Justice",
+  "formed": 2011,
+  "active": true,
+  "members": [
+    {
+      "name": "Batman",
+      "age": 48,
+      "secretIdentity": "Bruce Wayne",
+      "powers": [
+        "Peak Human Condition",
+        "Master Martial Artist",
+        "Weapon Mastery",
+        "Expert Marksman",
+        "Master Acrobat"
+      ]
+    }
+  ]
+}
