@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>React Workshop</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>
+            Usability - Design - Presence<br />for Websites and Web Applications
+          </h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <h2>Usability</h2>
+        </section>
+        <section>
+          <h4>Usability</h4>
+          <hr />
+          <p class="text-start">
+            Usability is a “quality attribute” that assesses how easy user
+            interfaces are to use. Five main components:
+          </p>
+          <dl>
+            <dt>Learnability</dt>
+            <dd>
+              how easy users can accomplish tasks the first time they encounter
+              the design
+            </dd>
+            <dt>Efficiency</dt>
+            <dd>how quickly users can perform tasks</dd>
+            <dt>Memorability (retention)</dt>
+            <dd>
+              when users return, how easily do they re-establish proficiency
+            </dd>
+            <dt>Errors/safety</dt>
+            <dd>
+              how many errors users make, how severe, how easy to recover from
+              errors
+            </dd>
+            <dt>Subjective satisfaction</dt>
+            <dd>how pleasant the design is to use</dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Usability</h4>
+          <hr />
+          <ul>
+            <li>
+              Usability is one of the most important quality factors and
+              acceptance criteria for web applications
+            </li>
+            <li>
+              Unfortunately usability is analogous to human health:
+              <ul>
+                <li>people notice it only when it is absent</li>
+              </ul>
+            </li>
+            <li>
+              Poorly usable web applications lead to frustration and cause users
+              to reject them. This is particularly true if there are
+              alternatives.
+            </li>
+            <li>
+              The objective is to design web applications so that users can
+              achieve their goals effectively, efficiently and satisfactorily.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Factors Determining Usability</h4>
+          <hr />
+          <ul>
+            <li>Web apps have to be particularly intuitive for users</li>
+            <li>
+              There are five major factors that can be used to determine the
+              usability of a web application:
+              <ul>
+                <li>The Response Time (download time for a page)</li>
+                <li>The Organization System of the website</li>
+                <li>The Navigation System used throughout the site</li>
+                <li>The Content of the website</li>
+                <li>The Aesthetics of the website</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>UF1: Response Time - Loading Time</h4>
+          <hr />
+          <ul>
+            <li>
+              All efforts in UX/UI design are wasted if website performance is
+              poor.
+            </li>
+            <li>
+              If a website takes too long to load, users will leave. How long is
+              too long?
+              <ul>
+                <li>
+                  0.1 second is about the limit for having the user feel that
+                  the system is reacting instantaneously
+                </li>
+                <li>
+                  1.0 second is about the limit for the user's flow of thought
+                  to stay uninterrupted
+                </li>
+                <li>
+                  10 seconds is about the limit for keeping the user's attention
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>UF1: Response Time - Loading Time</h4>
+          <hr />
+          <ul>
+            <li>
+              Factors that affect the loading time of a web page
+              <ul>
+                <li>
+                  Technical/Hardware related: available network bandwidth,
+                  connection speed, the location of the server and assets, the
+                  CPU/GPU/memory of the device etc.
+                </li>
+                <li>
+                  Code and Design related:
+
+                  <ul>
+                    <li>
+                      Poor coding standards - Formatting can be fixed with tools
+                      like: DirtyMarkUp, HTMLFormatter, HTML-Tidy
+                    </li>
+                    <li>
+                      Cumulative web page file size - large images, heavy use of
+                      CSS and JavaScript, plugins, complex queries
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Online tools like WebPageTest, PageSpeed Insights, or
+                  GTMetrix, or PingDom can help you determine the ‘performance
+                  of your website’
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>UF2: Organization System</h4>
+          <hr />
+          <ul>
+            <li>The way a website is organized can affect its usability</li>
+            <li>
+              Organization is important because a website is about information
+            </li>
+            <li>Organization refers to grouping of information</li>
+            <li>Grouping:</li>
+            <ul>
+              <li>
+                implies providing paths to information by showing relationships
+              </li>
+              <li>
+                but the trouble with relationships is that they are subjective
+              </li>
+            </ul>
+            <li>Exercise for you: organize the following information</li>
+            <ul>
+              <li>
+                Refrigerator, Socks, Nightstand, Living Room, Dictionary,
+                Kitchen, Milk, Bookshelf, Bedroom
+              </li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h4>Possible Groupings</h4>
+          <hr />
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P10_groupings.png"
+          />
+        </section>
+        <section>
+          <h4>UF2: Organization System</h4>
+          <hr />
+          <ul>
+            <li>
+              Determining how to organize your web site is no easy task.
+              <ul>
+                <li>need to understand information architecture</li>
+                <ul>
+                  <li>
+                    IA is not about the design, it is a matter of where
+                    content/links should be on a site - about the structure
+                  </li>
+                </ul>
+              </ul>
+            </li>
+            <li>
+              An organization system refers to SCHEME and STRUCTURE:
+              <ul>
+                <li>
+                  Organization Scheme: how a site is subdivided into sections
+                  (categorizing content based on the way you want each piece to
+                  relate to the other). Two types:
+                  <ul>
+                    <li>Exact Organization Schemes</li>
+                    <li>Subjective Organization Schemes</li>
+                  </ul>
+                </li>
+
+                <li>
+                  Organization Structure: the relationships between these
+                  sections
+                  <ul>
+                    <li>Linear, Hub, Web, etc.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Exact Organization Schemes</h4>
+          <hr />
+          <ul>
+            <li>
+              Divide content into sections that are mutually exclusive.
+              <ul>
+                <li>
+                  information is categorized in specific categories that do not
+                  overlap.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Exact Organization Schemes Types:
+              <ul>
+                <li>
+                  Alphabetical schemes: utilize the alphabet for the
+                  organization of content
+                </li>
+                <li>Chronological schemes: organize content by date</li>
+                <li>Geographical schemes: organize content on place</li>
+              </ul>
+            </li>
+            <li>
+              Exact schemes may be difficult for users to navigate.
+              <ul>
+                <li>
+                  users may not be familiar or may not understand how the
+                  information they are seeking fits into the organizational
+                  model
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Subjective Organization Schemes</h4>
+          <hr />
+          <ul>
+            <li>
+              Divide information into categories that defy exact definition. Can
+              be difficult to design from the start since a subjective
+              organization scheme needs to get into the mind of the user to
+              organize the content.
+            </li>
+            <li>
+              Examples of Subjective Organization Schemes Types:
+              <ul>
+                <li>
+                  Topic schemes: arrange content based upon the content’s
+                  subject matter. Successful when users look for a specific
+                  topic and know the keywords needed to get to that information.
+                </li>
+                <li>
+                  Task schemes: arrange content based upon the actions that
+                  users will consider when looking for content. Successful when
+                  the scheme accurately identifies these tasks.
+                </li>
+                <li>
+                  Metaphor schemes: organize content by connecting/relating it
+                  to familiar concepts and ideas. Used in desktop apps interface
+                  designs but not recommended for a primary website scheme.
+                </li>
+                <li>
+                  Audience schemes: arrange content based upon the type of
+                  audience to whom the content is directed. Challenges may arise
+                  if the type of audience is not identified easily.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Subjective Organization Schemes Examples</h4>
+          <hr />
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P10_subjective_examples.png"
+          />
+        </section>
+        <section>
+          <h4>Designing Schemes</h4>
+          <hr />
+          <ul>
+            <li>
+              Hybrid schemes are possible (not everything is black and white)
+            </li>
+            <li>
+              Categories generally should be mutually exclusive.
+              <ul>
+                <li>
+                  However, sometimes it is sensible to cross-list an item in
+                  more than one branch of a scheme
+                </li>
+                <li>
+                  Remember however that too much cross-listing, then scheme
+                  loses its value
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P10_cross.png"
+          />
+        </section>
+        <section>
+          <h4>Organization Structure</h4>
+          <hr />
+          <ul>
+            <li>
+              The structure of information defines how different categories
+              defined by the scheme relate to one another.
+              <ul>
+                <li>
+                  Structure defines way users navigate through information
+                </li>
+                <li>It is the plan or map of the pages in a site</li>
+              </ul>
+            </li>
+            <li>
+              Types of organizational structures:
+              <ul>
+                <li>Linear</li>
+                <li>Hub</li>
+                <li>Hierarchical</li>
+                <li>Web</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Organization Structures</h4>
+          <hr />
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P10_organisation_structures.png"
+          />
+        </section>
+        <section>
+          <h4>Designing Structures</h4>
+          <hr />
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P10_structures.png"
+          />
+        </section>
+        <section>
+          <h4>UF3: Navigation System</h4>
+          <hr />
+          <ul>
+            <li>
+              When a user enters a web site:
+              <ul>
+                <li>they usually try to find something, and</li>
+                <li>they must decide whether to search or to browse</li>
+              </ul>
+            </li>
+            <li>
+              Some users are “search-dominant”, others are “link-dominant”
+            </li>
+            <li>
+              About 50% of users will use search rather than the navigation
+              system.
+              <ul>
+                <li>
+                  if the search facility is not very accurate, adding a ‘search’
+                  may be counter-productive.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Every web site should provide both:
+              <ul>
+                <li>A way to find information via a search facility</li>
+                <li>
+                  A way to find information via clicking on a series of links,
+                  also called a Navigation System
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>The Navigation System</h4>
+          <hr />
+          <ul>
+            <li>
+              In any case, in any page in your site, users should be able to
+              tell:
+              <ul>
+                <li>Where on the web am I?</li>
+                <li>Where in the site am I?</li>
+                <li>Where can I go?</li>
+                <li>Where have I been?</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Navigation System Guidelines</h4>
+          <hr />
+          <ul>
+            <li>
+              In addition to the previous, the navigation system has to be:
+              <ul>
+                <li>simple and clear (reduce ambiguity, intuitive)</li>
+                <li>consistent among website</li>
+                <li>easily accessible (e.g. sticky on top)</li>
+                <li>responsive (support small devices)</li>
+                <li>
+                  Follow conventions ('Home'-'About'-'Contact', search box
+                  should be available on every page, footer with global
+                  navigation as hypertext, include sitemap, etc.)
+                </li>
+                <li>
+                  Follow the 3-clicks rule (as much as possible - no more than
+                  three clicks to find something, no more than seven
+                  categories.)
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>UF4: Content</h4>
+          <hr />
+          <ul>
+            <li>
+              For most users, this is the page they are looking for.
+              <ul>
+                <li>e.g., single article, product, story, blog entry, etc.</li>
+              </ul>
+            </li>
+            <li>
+              The focus of this page should be the content, not advertising,
+              navigation, etc.
+            </li>
+            <li>
+              Nothing is more important than the content of the site. Content
+              should be:
+              <ul>
+                <li>Informative, Accurate, Timely, Readable</li>
+              </ul>
+            </li>
+            <li>Do not design your site without the content.</li>
+            <li>
+              Remember that users DO NOT READ on the web. They scan!
+              <ul>
+                <li>
+                  Reading from computer screens is tiring and about 25% slower
+                  than reading from paper
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Content Guideline</h4>
+          <hr />
+          <ul>
+            <li>
+              Make the content scannable
+              <ul>
+                <li>
+                  Highlighted keywords, meaningful sub-headings, bulleted lists,
+                  anything to help the user filter what s/he is looking for
+                </li>
+                <li>One idea per paragraph</li>
+                <li>Inverted pyramid style of writing (conclusion first)</li>
+                <li>Half the word count of conventional writing</li>
+              </ul>
+            </li>
+          </ul>
+          <img
+            class="r-stretch"
+            style="filter: invert(0.95)"
+            src="../../assets/P10_scan.png"
+          />
+        </section>
+        <section>
+          <h4>Web Design Guidelines</h4>
+          <hr />
+          <ul>
+            <li>
+              Simplicity of the design
+              <ul>
+                <li>Do not add unnecessary design elements (KISS rule)</li>
+              </ul>
+            </li>
+            <li>
+              Consistency of the design
+              <ul>
+                <li>
+                  Examples: navigation, layout, same color scheme, consistent
+                  graphics, same font, etc.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Familiarity of the design
+              <ul>
+                <li>Don’t reinvent patterns - use existing ones</li>
+              </ul>
+            </li>
+            <li>
+              These three guidelines should be applied to all usability
+              components:
+              <ul>
+                <li>
+                  Organization System, Navigation System, Content, Aesthetics
+                </li>
+              </ul>
+            </li>
+            <li>
+              You should be clear of what your goals are.
+              <ul>
+                <li>
+                  Define target audience, objectives and purpose of website,
+                  content
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Web Design</h2>
+        </section>
+        <section>
+          <h4>Separate Top Sections</h4>
+          <hr />
+          <ul>
+            <li>
+              The top section says "Here’s the top of the page". Sounds obvious,
+              but it feels good to know clearly where the page starts
+            </li>
+            <li>
+              On any site, both the main branding and main navigation should be
+              obvious, bold and clear.
+            </li>
+          </ul>
+          <img class="r-stretch" src="../../assets/P_10_top.png" />
+        </section>
+        <section>
+          <h4>Bold Text Introductions</h4>
+          <hr />
+          <ul>
+            <li>Many sites lead with strong all-text headline descriptions.</li>
+            <li>These normally set out the site's USP or main message.</li>
+            <li>They tend to be graphical, rather than regular text.</li>
+          </ul>
+          <img class="r-stretch" src="../../assets/P10_bold.png" />
+        </section>
+        <section>
+          <h4>Bold Logos</h4>
+          <hr />
+          <ul>
+            <li>
+              A clear, bold, strong brand - incorporating attitude, tone of
+              voice, and first impression - is helped by a bold logo.
+            </li>
+            <li>
+              logo should:
+              <ul>
+                <li>be recognizable and distinctive</li>
+                <li>
+                  represent your brand's personality and qualities on first
+                  viewing
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <img class="r-stretch" src="../../assets/P10_logos.png" />
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
