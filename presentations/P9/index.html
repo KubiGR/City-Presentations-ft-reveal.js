@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>React Workshop</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>React Workshop</h2>
+          <h4 class="float-end">Andreas Dranidis</h4>
+        </section>
+        <section>
+          <img class="r-stretch" src="../../assets/P9_why_react.png" />
+          <p
+            style="
+              position: absolute;
+              top: 30px;
+              right: 450px;
+              transform: rotateZ(-20deg);
+            "
+          >
+            Pope Leon X by Fernando Botero @1964
+          </p>
+        </section>
+        <section>
+          <img class="r-stretch" src="../../assets/P9_useful_javascript.png" />
+        </section>
+        <section>
+          <img class="r-stretch" src="../../assets/P9_evolution.png" />
+        </section>
+        <section>
+          <img class="r-stretch" src="../../assets/P9_comic.png" />
+        </section>
+        <section>
+          <img class="r-stretch" src="../../assets/P9_usage_stats.png" />
+          <p
+            style="
+              position: absolute;
+              top: 250px;
+              left: 100px;
+              transform: rotateZ(-20deg);
+            "
+          >
+            Usage & Satisfaction
+          </p>
+        </section>
+        <section>
+          <h4>
+            React Advantages
+            <sub style="font-size: small">(according to google)</sub>
+          </h4>
+          <hr />
+          <ul>
+            <li>🙊 Easy to learn and use</li>
+            <li>🙌 Creating dynamic Web Applications becomes easier</li>
+            <li>🙌 Reusable components</li>
+            <li>🙊 Performance enhancement</li>
+            <li>🙌 The support of handy tools</li>
+            <li>🙊 Known to be SEO friendly</li>
+            <li>🙌 The benefit of having JavaScript library</li>
+            <li>🙌 Scope for testing the code</li>
+          </ul>
+        </section>
+        <section>
+          <h4>
+            React Disadvantages
+            <sub style="font-size: small">(according to google)</sub>
+          </h4>
+          <hr />
+          <ul>
+            <li>🙌 The high pace of development</li>
+            <li>🙌 Poor Documentation</li>
+            <li>🙌 View Part</li>
+            <li>🙊 JSX as a barrier</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Things that are good to know</h4>
+          <hr />
+          <p class="text-start">Array destructuring</p>
+          <pre><code class="language-js" data-trim>
+            const foo = ['one', 'two', 'three'];
+
+            const [red, yellow, green] = foo;
+            let [x, y, z, q] = foo;
+
+            [x, y] = [y, x];
+          </code></pre>
+          <p class="text-start">Object destructuring</p>
+          <pre><code class="language-js" data-trim>
+            const user = {
+              id: 42,
+              isVerified: true
+            };
+            const {id, isVerified} = user;
+
+            function userId({id}) {
+              return id;
+            }
+            console.log(userId(user));
+          </code></pre>
+        </section>
+        <section>
+          <h4>Things that are good to know</h4>
+          <hr />
+          <p class="text-start">Spread syntax</p>
+          <pre><code class="language-js" data-trim>
+            const parts = ['shoulders', 'knees'];
+            const lyrics = ['head', ...parts, 'and', 'toes'];
+
+            const arr = [1, 2, 3];
+            const arr2 = [...arr]; // like arr.slice()
+
+            const arr3 = [0, 1, 2];
+            const arr4 = [3, 4, 5];
+
+            arr5 = [...arr3, ...arr4];
+
+            const obj1 = { foo: 'bar', x: 42 };
+            const obj2 = { foo: 'baz', y: 13 };
+
+            const clonedObj = { ...obj1 };
+            const mergedObj = { ...obj1, ...obj2 };
+          </code></pre>
+        </section>
+        <section>
+          <h4>Things that are good to know</h4>
+          <hr />
+          <p class="text-start">Array methods</p>
+          <pre><code class="language-js" data-trim>
+            // Arrow function
+            map((element) => { /* ... */ })
+            map((element, index) => { /* ... */ })
+            map((element, index, array) => { /* ... */ })
+
+            const numbers = [1, 4, 9];
+            const roots = numbers.map((num) => Math.sqrt(num));
+            const logs = numbers.map((num, i) => `Number ${num} is at index ${i}`);
+          </code></pre>
+          <pre><code class="language-js" data-trim>
+            function isBigEnough(value) {
+              return value >= 10
+            }
+            
+            const filtered = [12, 5, 8, 130, 44].filter(isBigEnough)
+
+            const fruits = ['apple', 'banana', 'grapes', 'mango', 'orange']
+            function filterItems(arr, query) {
+              return arr.filter(function(el) {
+                return el.toLowerCase().indexOf(query.toLowerCase()) !== -1
+              })
+            }
+            console.log(filterItems(fruits, 'ap'))
+            console.log(filterItems(fruits, 'an'))
+          </code></pre>
+        </section>
+        <section>
+          <h4>Follow along</h4>
+          <hr />
+          <p class="text-start">
+            <a href="https://github.com/KubiGR/react-todo-workshop"
+              >https://github.com/KubiGR/react-todo-workshop</a
+            >
+          </p>
+
+          <p class="text-start">Prerequisites: node</p>
+          <p class="text-start">Checkout different branches to follow along</p>
+          <ul class="d-block">
+            <li>chapter-1</li>
+            <li>chapter-2</li>
+            <li>...</li>
+            <li>master</li>
+          </ul>
+          <p class="text-start">
+            In order to install dependencies, you need to run:
+            <code>npm install</code>
+          </p>
+          <p class="text-start">
+            And in order to start the development server, you need to run
+            <code>npm start</code>
+          </p>
+          <p class="text-start">
+            Recommended: React Developer Tools (browser extension)
+          </p>
+        </section>
+        <section>
+          <h4>JSX</h4>
+          <hr />
+          <p class="text-start">Javascript XML</p>
+          <pre><code class="language-js" data-trim data-noescape><script type="text/template">
+            const myelement = <h1>I Love JSX!</h1>;
+            const myelement = React.createElement('h1', {}, 'I Love JSX!');
+          </script></code></pre>
+          <p class="text-start">Expressions { }</p>
+          <pre><code class="language-js" data-trim data-noescape><script type="text/template">
+            return (<h1>React is {5 + 5} times better with JSX</h1>);
+
+            return (<img src={user.avatarUrl}></img>);
+            
+            const myelement = (<h1>Hello, {formatName(user)}!</h1>);
+          </script></code></pre>
+          <p class="text-start">Component returns exactly one DOM element</p>
+          <div class="d-flex">
+            <div style="flex-basis: 30%">
+              <pre><code class="language-js" data-trim data-noescape><script type="text/template">
+                return (
+                  <div>
+                    <h1>I am a Header.</h1>
+                    <h1>I am a Header too.</h1>
+                  </div>
+                );
+              </script></code></pre>
+            </div>
+            <div style="flex: 1">
+              <pre><code class="language-js" data-trim data-noescape><script type="text/template">
+                const title1 = React.createElement('h1', {}, 'I am a Header.');
+                const title2 = React.createElement('h1', {}, 'I am a Header too.');
+                const container = React.createElement('div', {}, [title1, title2]);
+              </script></code></pre>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Components</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex: 0 0 50%">
+              <ul>
+                <li>Components are independent and reusable bits of code.</li>
+                <li>
+                  Components come in two types:
+                  <ul>
+                    <li>class</li>
+                    <li>function</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div style="flex: 0 0 50%">
+              <ul>
+                <li>
+                  React components need to return JSX via a render() function
+                  (or return JSX directly, if they are function components).
+                </li>
+              </ul>
+            </div>
+          </div>
+          <img class="r-stretch" src="../../assets/P9_components.png" />
+        </section>
+        <section>
+          <h4>Props</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex: 0 0 50%">
+              <ul>
+                <li>Props are arguments passed into React components.</li>
+                <li>Props are passed to components via HTML attributes.</li>
+              </ul>
+              <pre><code class="language-js" data-trim data-noescape><script type="text/template">
+                function Welcome(props) {
+                  return <h1>Hello, {props.name}</h1>;
+                }
+
+                function Welcome({ name }) {
+                  return <h1>Hello, {name}</h1>;
+                }
+                
+                const element = <Welcome name="Sara" />;
+              </script></code></pre>
+            </div>
+            <div style="flex: 0 0 50%">
+              <img src="../../assets/P9_props.png" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>State</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex: 0 0 50%">
+              <ul>
+                <li>React components have a built-in state object.</li>
+                <li>
+                  The state object is where you store property values that
+                  belong to the component.
+                </li>
+              </ul>
+              <pre><code class="language-js" data-trim data-noescape><script type="text/template">
+                function Clock () {
+                  const [date, setDate] = useState(new Date());
+
+                  return (
+                    <div>
+                      <h2>
+                        It is {date.toLocaleTimeString()}.
+                      </h2>
+                    </div>
+                  );
+                }                
+              </script></code></pre>
+            </div>
+            <div style="flex: 0 0 50%">
+              <img src="../../assets/P9_props.png" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>State Dos and Don'ts</h4>
+          <hr />
+
+          <p class="text-start">
+            Do Not Modify State Directly (you won't get a re-render)
+          </p>
+          <pre><code class="language-js" data-trim data-noescape><script type="text/template">   
+                  // Wrong
+                  comment = 'Hello';
+                  // Correct
+                  setComment('Hello');
+                </script></code></pre>
+          <p class="text-start">
+            State Updates May Be Asynchronous (you depend on invalid data)
+          </p>
+          <em style="font-size: 18px"
+            >React may batch multiple setState() calls into a single update for
+            performance.
+          </em>
+          <pre><code class="language-js" data-trim data-noescape><script type="text/template">   
+            // Wrong
+            this.setState({
+              counter: this.state.counter + this.props.increment,
+            });
+            // Correct
+            this.setState((state, props) => ({
+              counter: state.counter + props.increment
+            }));
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>Component Lifecycle</h4>
+          <hr />
+          <em
+            >A component is updated whenever there is a change in the
+            component's state or props.
+          </em>
+          <img class="r-stretch" src="../../assets/P9_lifecycle.png" />
+        </section>
+        <section>
+          <h4>⚡️ Effect Hook</h4>
+          <hr />
+          <pre><code class="language-js" data-trim data-noescape><script type="text/template">   
+            useEffect(() => {
+              document.title = `You clicked ${count} times`;
+            });
+          </script></code></pre>
+          <pre><code class="language-js" data-trim data-noescape><script type="text/template">   
+            componentDidMount() {
+              document.title = `You clicked ${count} times`;
+
+            }
+          
+            componentDidUpdate() {
+              document.title = `You clicked ${count} times`;
+            }
+          </script></code></pre>
+          <pre><code class="language-js" data-trim data-noescape><script type="text/template">   
+            useEffect(() => {
+              ChatAPI.subscribeToFriendStatus(id, handleChange);
+              return () => {
+                ChatAPI.unsubscribeFromFriendStatus(
+                  id, handleChange
+                );
+              };
+            });
+          </script></code></pre>
+        </section>
+        <section>
+          <h4>📦 Ref Hook</h4>
+          <hr />
+          <div class="d-flex">
+            <div style="flex: 0 0 50%">
+              <ul>
+                <li>
+                  Essentially, useRef is like a “box” that can hold a mutable
+                  value in its .current property.
+                </li>
+                <li>
+                  Mutating the .current property doesn’t cause a re-render.
+                </li>
+                <li>
+                  If you pass a ref object to React, React will set its .current
+                  property to the corresponding DOM node whenever that node
+                  changes.
+                </li>
+              </ul>
+            </div>
+            <div style="flex: 0 0 50%">
+              <pre><code class="language-js" data-trim data-noescape><script type="text/template">
+                function TextInputWithFocusButton() {
+                  const inputEl = useRef(null);
+                  const onButtonClick = () => {
+                    inputEl.current.focus();
+                  };
+                  return (
+                    <>
+                      <input ref={inputEl} type="text" />
+                      <button onClick={onButtonClick}>
+                        Focus the input
+                      </button>
+                    </>
+                  );
+                }            
+              </script></code></pre>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        parallaxBackgroundImage: "/assets/pres-bg.png",
+        parallaxBackgroundSize: "2100px 1080px",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
